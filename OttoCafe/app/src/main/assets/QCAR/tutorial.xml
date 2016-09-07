@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="KakaoTalk_20160822_220301150" size="180.000000 240.000000" />
+    <ImageTarget name="KakaoTalk_20160822_220301864" size="180.000000 180.000000" />
+    <ImageTarget name="KakaoTalk_20160822_220302397" size="180.000000 180.240326" />
+    <ImageTarget name="MyPhoto_1076360282_0120" size="180.000000 157.058823" />
+  </Tracking>
+</QCARConfig>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="friends-1.1.17">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.kakao.sdk/friends/1.1.17/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.kakao.sdk/friends/1.1.17/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.kakao.sdk/friends/1.1.17/8fb01d598618eb308a0b712cae269ed7b02c712c/friends-1.1.17-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

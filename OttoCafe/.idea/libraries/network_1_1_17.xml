@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="network-1.1.17">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.kakao.sdk/network/1.1.17/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.kakao.sdk/network/1.1.17/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.kakao.sdk/network/1.1.17/eb158a946c6060c2949fd7ee95e69a3e737b4b71/network-1.1.17-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\user\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable-small-v4\\kakaotalk_icon.png",
+        "source": "D:\\user\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.kakao.sdk\\util\\1.1.17\\res\\drawable-small-v4\\kakaotalk_icon.png"
+    },
+    {
+        "merged": "D:\\user\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable-small-v4\\kakaoaccount_icon.png",
+        "source": "D:\\user\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.kakao.sdk\\util\\1.1.17\\res\\drawable-small-v4\\kakaoaccount_icon.png"
+    },
+    {
+        "merged": "D:\\user\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable-small-v4\\kakaostory_icon.png",
+        "source": "D:\\user\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.kakao.sdk\\util\\1.1.17\\res\\drawable-small-v4\\kakaostory_icon.png"
+    }
+]
