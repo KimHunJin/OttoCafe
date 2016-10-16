@@ -1,0 +1,4 @@
+﻿PagerSlidingTabStrip
+	Copyright 2013 Andreas Stuetz
+
+Apache

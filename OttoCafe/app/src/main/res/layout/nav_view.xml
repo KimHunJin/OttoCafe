@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:background="@drawable/coffeeback"
+        android:orientation="horizontal">
+
+        <sungkyul.ac.kr.ottocafe.utils.RoundImageView
+            android:id="@+id/imgNavUser"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/circle_img" />
+
+        <TextView
+            android:id="@+id/txtNavUserNickName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="24dp"
+            android:layout_toRightOf="@id/imgNavUser"
+            android:background="#33eeeeee"
+            android:text="사용자 이름"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtNavUserPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNavUserNickName"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/imgNavUser"
+            android:background="#33eeeeee"
+            android:text="적립 포인트"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lstNavView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/colorBlack"
+        android:dividerHeight="1dp"
+        android:scrollbars="none"></ListView>
+
+</LinearLayout>
