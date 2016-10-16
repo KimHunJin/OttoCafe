@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 /**
  * Created by HunJin on 2016-09-22.
+ * 원형 이미지 뷰
  */
 public class RoundImageView extends ImageView{
     public RoundImageView(Context context) {

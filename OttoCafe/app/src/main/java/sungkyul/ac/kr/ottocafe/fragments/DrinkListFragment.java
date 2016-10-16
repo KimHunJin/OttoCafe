@@ -24,6 +24,7 @@ import sungkyul.ac.kr.ottocafe.utils.RecyclerViewOnItemClickListener;
 
 /**
  * Created by HunJin on 2016-09-12.
+ * 음료 리스트 프래그먼트
  */
 public class DrinkListFragment extends Fragment {
 
@@ -52,6 +53,10 @@ public class DrinkListFragment extends Fragment {
         return mView;
     }
 
+    /**
+     * retrofit을 사용하여 이미지 가져와야 함.
+     * 아직 서버 API 준비 안됨
+     */
     void getImage() {
         menuListAdapter.addData(new MenuItem(0, "아이스 아메리카노", "4,000", "원두를 갈아 만든 그냥 쓴 커피", "http://14.63.196.255/020cafe_image/blackcoffee.jpg"));
         menuListAdapter.addData(new MenuItem(1, "카페라떼", "4,500", "우유를 타서 부드럽게 마실 수 있는 커피", "http://14.63.196.255/020cafe_image/latte.jpg"));
@@ -62,8 +67,6 @@ public class DrinkListFragment extends Fragment {
         recyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(mView.getContext()));
-
-
 //        lst = (ListView)mView.findViewById(R.id.lst_drink);
     }
 

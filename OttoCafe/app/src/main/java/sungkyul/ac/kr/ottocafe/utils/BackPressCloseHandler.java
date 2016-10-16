@@ -4,6 +4,7 @@ import android.app.Activity;
 
 /**
  * Created by HunJin on 2016-09-23.
+ * 두 번 클릭 종료
  */
 public class BackPressCloseHandler {
     private long backKeyPressedTime = 0;

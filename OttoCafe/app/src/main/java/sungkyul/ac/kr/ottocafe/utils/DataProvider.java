@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 /**
  * Created by HunJin on 2016-09-11.
+ * 이미지 저장
  */
 public class DataProvider {
 

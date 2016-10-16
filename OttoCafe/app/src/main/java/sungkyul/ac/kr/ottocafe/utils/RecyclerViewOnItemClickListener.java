@@ -8,11 +8,13 @@ import android.view.View;
 
 /**
  * Created by HunJin on 2016-10-14.
+ *
+ * 리사이클러뷰에 없는 아이템 클릭 리스너 오버라이드 클래스
  */
-
 public class RecyclerViewOnItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
     private OnItemClickListener mListener;
     private GestureDetector mGestureDetector;
+
 
     public RecyclerViewOnItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
         this.mListener = listener;
@@ -26,7 +28,7 @@ public class RecyclerViewOnItemClickListener extends RecyclerView.SimpleOnItemTo
             @Override
             public void onLongPress(MotionEvent e) {
                 View childView = recyclerView.findChildViewUnder(e.getX(), e.getY());
-                if(childView != null && mListener != null){
+                if (childView != null && mListener != null) {
                     mListener.onItemLongClick(childView, recyclerView.getChildAdapterPosition(childView));
                 }
             }
@@ -45,6 +47,7 @@ public class RecyclerViewOnItemClickListener extends RecyclerView.SimpleOnItemTo
 
     public interface OnItemClickListener {
         void onItemClick(View v, int position);
+
         void onItemLongClick(View v, int position);
     }
 }

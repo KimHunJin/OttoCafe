@@ -25,6 +25,7 @@ import static com.kakao.util.helper.Utility.getPackageInfo;
 
 /**
  * Created by HunJin on 2016-09-08.
+ * 카카오 로그인에 사용되는 클래스
  */
 public class GlobalApplication extends Application {
     private static volatile GlobalApplication instance = null;

@@ -15,7 +15,7 @@ import sungkyul.ac.kr.ottocafe.activities.kakao.BaseActivity;
 /**
  * Created by HunJin on 2016-09-08.
  *
- * sign is kakao
+ * sign in is kakao
  */
 public class LoginActivity extends BaseActivity {
 

@@ -50,6 +50,7 @@ public class CartActivity extends AppCompatActivity {
      */
     void addCart() {
         // get list using sqlite
+        // SQLite를 활용해서 장바구니 리스트를 가져와야 함
 
         cartItemArrayList.add(new CartItem(0, "블랙커피", "8,000", "2", "http://14.63.196.255/020cafe_image/blackcoffee.jpg"));
         cartItemArrayList.add(new CartItem(1, "카페라떼", "4,500", "1", "http://14.63.196.255/020cafe_image/latte.jpg"));

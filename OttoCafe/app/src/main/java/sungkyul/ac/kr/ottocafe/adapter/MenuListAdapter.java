@@ -21,6 +21,7 @@ import sungkyul.ac.kr.ottocafe.utils.EndString;
 
 /**
  * Created by HunJin on 2016-09-15.
+ * 리사이클러뷰를 활용하여 만든 정말 쓰기에 좋아보이는 어댑터 클래스
  */
 public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHolder> {
 

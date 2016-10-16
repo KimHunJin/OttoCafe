@@ -34,7 +34,7 @@ import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
  * <p>
  * detail form of menuu
  */
-public class DetailMenuActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class DetailMenuActivity extends AppCompatActivity {
 
     final String TAG = "DetailMenuActivity";
 
@@ -82,6 +82,10 @@ public class DetailMenuActivity extends AppCompatActivity implements AdapterView
         });
     }
 
+
+    /**
+     * 초기화
+     */
     void initialization() {
         txtName = (TextView) findViewById(R.id.txtDetailMenuName);
         txtDescription = (TextView) findViewById(R.id.txtDetailMenuComment);
@@ -93,8 +97,12 @@ public class DetailMenuActivity extends AppCompatActivity implements AdapterView
         spinnerSetting();
     }
 
+    /**
+     * 스피너 세팅 - 클릭 시 변수 size와 변수 number에 값 저장.
+     * spnSize default value = small
+     * spnNumber default value = number
+     */
     void spinnerSetting() {
-
         ArrayAdapter<String> sizeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, sizes);
         spnSize.setAdapter(sizeAdapter);
 
@@ -144,16 +152,5 @@ public class DetailMenuActivity extends AppCompatActivity implements AdapterView
         // key를 이용하여 정보를 가져온다. (retrofit 사용하 예정)
         txtName.setText(it.getExtras().getString("CoffeeName"));
         Picasso.with(getApplicationContext()).load(it.getExtras().getString("CoffeeImage")).into(imgMenu);
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.i(TAG, "spinner id : " + id);
-//        size = sizes[position];
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

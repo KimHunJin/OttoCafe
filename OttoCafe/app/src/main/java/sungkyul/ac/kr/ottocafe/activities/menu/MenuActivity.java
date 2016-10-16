@@ -12,6 +12,7 @@ import sungkyul.ac.kr.ottocafe.adapter.ViewPagerAdapter;
 
 /**
  * Created by HunJin on 2016-09-11.
+ * 음료와 사이드메뉴의 프래그먼트를 지정하기 위해 베이스가 되는 액티비티
  */
 public class MenuActivity extends AppCompatActivity {
 

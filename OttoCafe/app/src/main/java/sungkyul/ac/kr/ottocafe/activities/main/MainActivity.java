@@ -47,7 +47,7 @@ import sungkyul.ac.kr.ottocafe.utils.SaveDataSession;
 /**
  * Created by HunJin on 2016-09-09.
  *
- * the main page
+ * main activity
  */
 public class MainActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
@@ -77,6 +77,10 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
 
     }
 
+    /**
+     * retrofit을 활용해 데이터를 가져와야 함.
+     * 아직 서버 API가 준비되지 않음.
+     */
     private void setData() {
 
         dataProvider.setHashFile(1 + "", "http://14.63.196.255/020cafe_image/blackcoffee.jpg");
@@ -84,6 +88,9 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
         dataProvider.setHashFile(3 + "", "http://14.63.196.255/020cafe_image/latte.jpg");
     }
 
+    /**
+     * 카카오 유저의 닉네임, 프로필 가져오는 메서드
+     */
     private void getMyInfo() {
         UserManagement.requestMe(new MeResponseCallback() {
             @Override
@@ -138,7 +145,7 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
     }
 
     /**
-     * navigation list click listener
+     * 네비게이션 클릭 리스너
      */
     void navClick() {
         lstNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -252,6 +259,10 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
         mDemoSlider.stopAutoCycle();
     }
 
+    /**
+     * 버튼 클릭 리스너
+     * @param v
+     */
     public void click(View v) {
         switch (v.getId()) {
             case R.id.btn_ar: {

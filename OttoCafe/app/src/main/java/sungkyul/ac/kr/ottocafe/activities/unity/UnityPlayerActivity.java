@@ -12,6 +12,7 @@ import com.unity3d.player.UnityPlayer;
 
 /**
  * Created by HunJin on 2016-09-07.
+ * 유니티로 제작한 프로젝트를 사용하기 위한 클래스 (건드릴 필요 없음)
  */
 public class UnityPlayerActivity extends Activity
 {

@@ -11,6 +11,7 @@ import sungkyul.ac.kr.ottocafe.R;
 
 /**
  * Created by HunJin on 2016-09-12.
+ * 사이드 메뉴 (케잌 같은거) 아직 안만듬 대충 DrinkList와 비슷할거 같음
  */
 public class SideMenuListFragment extends Fragment {
 

@@ -18,6 +18,7 @@ import sungkyul.ac.kr.ottocafe.utils.EndString;
 
 /**
  * Created by HunJin on 2016-09-13.
+ * MenuListAdapter와 동일한 폼으로 통일 필요
  */
 public class CartListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
