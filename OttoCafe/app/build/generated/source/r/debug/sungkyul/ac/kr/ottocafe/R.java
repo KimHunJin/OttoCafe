@@ -3364,7 +3364,7 @@ containing a value of this type.
         public static final int listMode=0x7f0d0012;
         public static final int list_item=0x7f0d0062;
         public static final int lstNavView=0x7f0d00b9;
-        public static final int lst_cart=0x7f0d008a;
+        public static final int rcv_cart =0x7f0d008a;
         public static final int marquee=0x7f0d0038;
         public static final int media_actions=0x7f0d00bd;
         public static final int menu=0x7f0d0093;
@@ -3391,7 +3391,7 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f0d000e;
         public static final int radio=0x7f0d0075;
         public static final int rect=0x7f0d0044;
-        public static final int recycler_view=0x7f0d00a9;
+        public static final int rcv_drink =0x7f0d00a9;
         public static final int right=0x7f0d002b;
         public static final int screen=0x7f0d002f;
         public static final int scroll=0x7f0d001f;

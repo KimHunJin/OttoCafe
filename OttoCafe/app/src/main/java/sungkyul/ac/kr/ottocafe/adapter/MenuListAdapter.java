@@ -39,7 +39,7 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
     public MenuListAdapter(Context context) {
         super();
         this.context = context;
-        items = new ArrayList<MenuItem>();
+        items = new ArrayList<>();
 
     }
 
@@ -55,7 +55,7 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.item_menu_list, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
@@ -64,7 +64,6 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         MenuItem listItem = items.get(position);
-        Log.e(TAG,inflater.getContext()+"");
         Picasso.with(inflater.getContext()).load(listItem.getmImageUrl()).resize(1020, 492).centerCrop().into(viewHolder.imgItemMenu);
         viewHolder.txtItemMenuName.setText(EndString.endString(listItem.getmName().toString(), 15));
         viewHolder.txtItemMenuCost.setText(listItem.getmCost());

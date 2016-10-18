@@ -8,13 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
-import java.util.ArrayList;
 
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity;
@@ -64,7 +59,7 @@ public class DrinkListFragment extends Fragment {
     }
 
     void initialization() {
-        recyclerView = (RecyclerView) mView.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) mView.findViewById(R.id.rcv_drink);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(mView.getContext()));
 //        lst = (ListView)mView.findViewById(R.id.lst_drink);

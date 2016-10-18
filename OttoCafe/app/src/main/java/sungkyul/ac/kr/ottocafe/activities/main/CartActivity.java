@@ -3,6 +3,8 @@ package sungkyul.ac.kr.ottocafe.activities.main;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -12,19 +14,21 @@ import java.util.ArrayList;
 
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity;
+import sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity;
 import sungkyul.ac.kr.ottocafe.adapter.CartListAdapter;
-import sungkyul.ac.kr.ottocafe.adapter.MenuListAdapter;
 import sungkyul.ac.kr.ottocafe.items.CartItem;
-import sungkyul.ac.kr.ottocafe.items.MenuItem;
+import sungkyul.ac.kr.ottocafe.utils.RecyclerViewOnItemClickListener;
 
 /**
  * Created by HunJin on 2016-09-17.
- *
+ * <p>
  * cart activity
  */
 public class CartActivity extends AppCompatActivity {
 
-    private ListView lst;
+    static final String TAG = "CartActivity";
+
+    private RecyclerView rcv;
     private CartListAdapter cartListAdapter;
     private ArrayList<CartItem> cartItemArrayList;
     private Button btnCartCencel, btnCartPayment;
@@ -36,8 +40,8 @@ public class CartActivity extends AppCompatActivity {
 
         initialization();
 
-        cartListAdapter = new CartListAdapter(getApplicationContext(), R.layout.item_menu_cart, cartItemArrayList);
-        lst.setAdapter(cartListAdapter);
+        cartListAdapter = new CartListAdapter(getApplicationContext());
+        rcv.setAdapter(cartListAdapter);
 
         addCart();
         cartListAdapter.notifyDataSetChanged();
@@ -60,31 +64,28 @@ public class CartActivity extends AppCompatActivity {
      * component initialization
      */
     void initialization() {
-        lst = (ListView) findViewById(R.id.lst_cart);
-        btnCartCencel = (Button)findViewById(R.id.btnCartCencel);
-        btnCartPayment = (Button)findViewById(R.id.btnCartPayment);
+        rcv = (RecyclerView) findViewById(R.id.rcv_cart);
+        btnCartCencel = (Button) findViewById(R.id.btnCartCencel);
+        btnCartPayment = (Button) findViewById(R.id.btnCartPayment);
 
         cartItemArrayList = new ArrayList<>();
     }
 
     /**
-     * list listener
+     * recycler view listener
      */
     void listener() {
-        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        rcv.addOnItemTouchListener(new RecyclerViewOnItemClickListener(getApplicationContext(), rcv, new RecyclerViewOnItemClickListener.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // show detail information
+            public void onItemClick(View v, int position) {
+                Log.d(TAG, "click");
             }
-        });
 
-        lst.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                // alert dialog - delete or cancel
-                return false;
+            public void onItemLongClick(View v, int position) {
+                Log.d(TAG, "long click");
             }
-        });
+        }));
 
         btnCartCencel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +97,7 @@ public class CartActivity extends AppCompatActivity {
         btnCartPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 장바구니에 담은 것들을 한번에 결제 (서버처리)
                 startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
             }
         });
