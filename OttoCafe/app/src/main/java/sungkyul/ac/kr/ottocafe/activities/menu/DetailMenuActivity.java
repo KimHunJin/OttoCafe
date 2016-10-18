@@ -3,7 +3,6 @@ package sungkyul.ac.kr.ottocafe.activities.menu;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +23,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity;
-import sungkyul.ac.kr.ottocafe.activities.sql.SQLite;
+import sungkyul.ac.kr.ottocafe.sql.SQLite;
 import sungkyul.ac.kr.ottocafe.repo.ConnectService;
 import sungkyul.ac.kr.ottocafe.repo.RepoItem;
 import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
@@ -43,8 +42,10 @@ public class DetailMenuActivity extends AppCompatActivity {
     private ImageView imgMenu;
     private Spinner spnSize, spnNumber;
 
+    private int price, upPrice;
     private String size;
     private int cost;
+    private int number;
     private String imgPath;
 
     String[] sizes = new String[]{"Small", "Middle", "Large"};
@@ -56,16 +57,21 @@ public class DetailMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_menu);
         initialization();
         settingDetailPage();
-
         btnListener();
+        spnClickListener();
     }
 
+    /**
+     * 버튼 클릭 리스너
+     */
     void btnListener() {
         fbtAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLite sqlite = new SQLite(getApplicationContext(),"cart.db",null,1);
-                sqlite.insert(txtName.getText().toString(),Integer.parseInt(size),cost,imgPath);
+                SQLite sqlite = new SQLite(getApplicationContext(), "menu.db", null, 1);
+                cost = upPrice * number;
+                sqlite.insert(txtName.getText().toString(), number, cost, imgPath);
+                sqlite.close();
                 // 장바구니 추가
             }
         });
@@ -95,6 +101,7 @@ public class DetailMenuActivity extends AppCompatActivity {
         spnSize = (Spinner) findViewById(R.id.spnSIze);
         spnNumber = (Spinner) findViewById(R.id.spnNumber);
         spinnerSetting();
+
     }
 
     /**
@@ -108,6 +115,49 @@ public class DetailMenuActivity extends AppCompatActivity {
 
         ArrayAdapter<String> numberAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, numbers);
         spnNumber.setAdapter(numberAdapter);
+    }
+
+    /**
+     * 스피너 클릭 리스너
+     */
+    void spnClickListener() {
+        spnSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                size = sizes[position];
+                switch (position) {
+                    case 0: {
+                        upPrice = price;
+                        break;
+                    }
+                    case 1: {
+                        upPrice = price + 500;
+                        break;
+                    }
+                    case 2: {
+                        upPrice = price + 1000;
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spnNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                number = Integer.parseInt(numbers[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 
@@ -147,8 +197,9 @@ public class DetailMenuActivity extends AppCompatActivity {
      */
     void settingDetailPage() {
         Intent it = getIntent();
-        long key = it.getExtras().getLong("CoffeeKey");
-
+//        long key = it.getExtras().getLong("CoffeeKey");
+        price = Integer.parseInt(it.getExtras().getString("CoffeePrice"));
+        imgPath = it.getExtras().getString("CoffeeImage");
         // key를 이용하여 정보를 가져온다. (retrofit 사용하 예정)
         txtName.setText(it.getExtras().getString("CoffeeName"));
         Picasso.with(getApplicationContext()).load(it.getExtras().getString("CoffeeImage")).into(imgMenu);

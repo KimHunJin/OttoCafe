@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,7 +15,6 @@ import java.util.List;
 
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.items.CartItem;
-import sungkyul.ac.kr.ottocafe.items.MenuItem;
 import sungkyul.ac.kr.ottocafe.utils.EndString;
 
 /**
@@ -32,6 +30,10 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     private Context context;
     List<CartItem> items;
 
+    public List<CartItem> getItems() {
+        return items;
+    }
+
     public CartListAdapter(Context context) {
         super();
         this.context = context;
@@ -39,7 +41,13 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     }
 
     public void addData(CartItem item) {
+//        Log.e(TAG,"add " + item);
         items.add(item);
+        notifyDataSetChanged();
+    }
+
+    public void removeData(int position) {
+        items.remove(position);
         notifyDataSetChanged();
     }
 

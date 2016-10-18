@@ -855,7 +855,6 @@ int id line3 0x7f0d00c3
 int id listMode 0x7f0d0012
 int id list_item 0x7f0d0062
 int id lstNavView 0x7f0d00b9
-int id lst_cart 0x7f0d008a
 int id marquee 0x7f0d0038
 int id media_actions 0x7f0d00bd
 int id menu 0x7f0d0093
@@ -881,8 +880,9 @@ int id pin 0x7f0d0023
 int id progress_circular 0x7f0d000d
 int id progress_horizontal 0x7f0d000e
 int id radio 0x7f0d0075
+int id rcv_cart 0x7f0d008a
+int id rcv_drink 0x7f0d00a9
 int id rect 0x7f0d0044
-int id recycler_view 0x7f0d00a9
 int id right 0x7f0d002b
 int id screen 0x7f0d002f
 int id scroll 0x7f0d001f

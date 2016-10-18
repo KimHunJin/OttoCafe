@@ -24,7 +24,6 @@ import sungkyul.ac.kr.ottocafe.utils.RecyclerViewOnItemClickListener;
 public class DrinkListFragment extends Fragment {
 
     private View mView;
-    //    private ListView lst;
     private MenuListAdapter menuListAdapter;
     private RecyclerView recyclerView;
 
@@ -53,16 +52,15 @@ public class DrinkListFragment extends Fragment {
      * 아직 서버 API 준비 안됨
      */
     void getImage() {
-        menuListAdapter.addData(new MenuItem(0, "아이스 아메리카노", "4,000", "원두를 갈아 만든 그냥 쓴 커피", "http://14.63.196.255/020cafe_image/blackcoffee.jpg"));
-        menuListAdapter.addData(new MenuItem(1, "카페라떼", "4,500", "우유를 타서 부드럽게 마실 수 있는 커피", "http://14.63.196.255/020cafe_image/latte.jpg"));
-        menuListAdapter.addData(new MenuItem(2, "에스프레소", "4,000", "유럽식 입맛을 즐기고 싶다면.. 에스프레소", "http://14.63.196.255/020cafe_image/espresso.jpg"));
+        menuListAdapter.addData(new MenuItem(0, "아이스 아메리카노", "4000", "원두를 갈아 만든 그냥 쓴 커피", "http://14.63.196.255/020cafe_image/blackcoffee.jpg"));
+        menuListAdapter.addData(new MenuItem(1, "카페라떼", "4500", "우유를 타서 부드럽게 마실 수 있는 커피", "http://14.63.196.255/020cafe_image/latte.jpg"));
+        menuListAdapter.addData(new MenuItem(2, "에스프레소", "4000", "유럽식 입맛을 즐기고 싶다면.. 에스프레소", "http://14.63.196.255/020cafe_image/espresso.jpg"));
     }
 
     void initialization() {
         recyclerView = (RecyclerView) mView.findViewById(R.id.rcv_drink);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(mView.getContext()));
-//        lst = (ListView)mView.findViewById(R.id.lst_drink);
     }
 
     void lstClcikListener() {
@@ -73,8 +71,9 @@ public class DrinkListFragment extends Fragment {
                 Intent it = new Intent(getActivity(), DetailMenuActivity.class);
 
                 it.putExtra("CoffeeKey", menuListAdapter.getItems().get(position).getmNumber());
-                it.putExtra("CoffeeName",  menuListAdapter.getItems().get(position).getmName());
-                it.putExtra("CoffeeImage",  menuListAdapter.getItems().get(position).getmImageUrl());
+                it.putExtra("CoffeeName", menuListAdapter.getItems().get(position).getmName());
+                it.putExtra("CoffeeImage", menuListAdapter.getItems().get(position).getmImageUrl());
+                it.putExtra("CoffeePrice",menuListAdapter.getItems().get(position).getmCost());
                 startActivity(it);
             }
 
