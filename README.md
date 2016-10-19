@@ -1,7 +1,5 @@
 # OttoCafe
-
-
-
+Cafe Platform that used O2O Service
 
 #Error Code - Public
 200 : Success
