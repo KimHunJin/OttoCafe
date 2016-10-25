@@ -5,8 +5,10 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v4.widget.DrawerLayout;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,19 +24,31 @@ import com.hkm.slider.SliderTypes.BaseSliderView;
 import com.hkm.slider.SliderTypes.TextSliderView;
 import com.hkm.slider.TransformerL;
 import com.hkm.slider.Tricks.ViewPagerEx;
+import com.kakao.auth.ApiResponseCallback;
+import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
+import com.kakao.push.PushActivity;
+import com.kakao.push.PushMessageBuilder;
+import com.kakao.push.PushService;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
+import com.kakao.util.helper.SharedPreferencesCache;
+import com.kakao.util.helper.log.Logger;
 import com.squareup.picasso.Picasso;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import sungkyul.ac.kr.ottocafe.R;
+import sungkyul.ac.kr.ottocafe.activities.gcm.PushMainActivity;
 import sungkyul.ac.kr.ottocafe.activities.kakao.BaseActivity;
+import sungkyul.ac.kr.ottocafe.activities.member.LoginActivity;
+import sungkyul.ac.kr.ottocafe.activities.member.SignupActivity;
 import sungkyul.ac.kr.ottocafe.activities.menu.MenuActivity;
 import sungkyul.ac.kr.ottocafe.activities.unity.UnityPlayerActivity;
 import sungkyul.ac.kr.ottocafe.adapter.NavListAdapter;
@@ -46,12 +60,13 @@ import sungkyul.ac.kr.ottocafe.utils.SaveDataSession;
 
 /**
  * Created by HunJin on 2016-09-09.
- *
+ * <p>
  * main activity
  */
-public class MainActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class MainActivity extends PushActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private static final String TAG = "MainActivity";
+    protected static final String PROPERTY_DEVICE_ID = "device_id";
     private BackPressCloseHandler backPressCloseHandler;
 
     private SliderLayout mDemoSlider;
@@ -65,7 +80,7 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
     private DrawerLayout drawerLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -75,6 +90,81 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
         getMyInfo();
         navClick();
 
+    }
+
+    @Override
+    protected void redirectLoginActivity() {
+        final Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected String getDeviceUUID() {
+        if (deviceUUID != null)
+            return deviceUUID;
+
+        final SharedPreferencesCache cache = Session.getAppCache();
+        final String id = cache.getString(PROPERTY_DEVICE_ID);
+
+        if (id != null) {
+            deviceUUID = id;
+            return deviceUUID;
+        } else {
+            // 적절한 알고리즘으로 기기 고유 ID를 생성한다.
+            // 기기 고유 ID 생성을 위해 사용자 개인정보를 사용할 경우는 사용자 동의를 받도록 한다.
+            UUID uuid = null;
+            final String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            try {
+                if (!"9774d56d682e549c".equals(androidId)) {
+                    uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8"));
+                } else {
+                    final String deviceId = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE)).getDeviceId();
+                    uuid = deviceId != null ? UUID.nameUUIDFromBytes(deviceId.getBytes("utf8")) : UUID.randomUUID();
+                }
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
+
+            Bundle bundle = new Bundle();
+            bundle.putString(PROPERTY_DEVICE_ID, uuid.toString());
+            cache.save(bundle);
+
+            deviceUUID = uuid.toString();
+            return deviceUUID;
+        }
+    }
+
+    private void deregisterPushTokenAll() {
+        PushService.deregisterPushTokenAll(new KakaoPushResponseCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                Toast.makeText(getApplicationContext(), "succeeded to deregister all push token of this user", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void deregisterPushToken() {
+        PushService.deregisterPushToken(new KakaoPushResponseCallback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                Toast.makeText(getApplicationContext(), "succeeded to deregister push token", Toast.LENGTH_SHORT).show();
+            }
+        }, deviceUUID);
+    }
+
+    private void sendPushMessageToMe() {
+        final String testMessage = new PushMessageBuilder("{\"content\":\"테스트 메시지\", \"friend_id\":1, \"noti\":\"test\"}").toString();
+        if (testMessage == null) {
+            Logger.w("failed to create push Message");
+        } else {
+            PushService.sendPushMessage(new KakaoPushResponseCallback<Boolean>() {
+                @Override
+                public void onSuccess(Boolean result) {
+                    Toast.makeText(getApplicationContext(), "succeeded to send message", Toast.LENGTH_SHORT).show();
+                }
+            }, testMessage, deviceUUID);
+        }
     }
 
     /**
@@ -261,6 +351,7 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
 
     /**
      * 버튼 클릭 리스너
+     *
      * @param v
      */
     public void click(View v) {
@@ -284,5 +375,28 @@ public class MainActivity extends BaseActivity implements BaseSliderView.OnSlide
         //핸들러 작동
         backPressCloseHandler.onBackPressed();
         Toast.makeText(getApplicationContext(), "한 번 더 누르면 앱이 종료됩니다", Toast.LENGTH_SHORT).show();
+    }
+
+    private abstract class KakaoPushResponseCallback<T> extends ApiResponseCallback<T> {
+        @Override
+        public void onFailure(ErrorResult errorResult) {
+            Toast.makeText(self, "failure : " + errorResult, Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onSessionClosed(ErrorResult errorResult) {
+            redirectLoginActivity();
+        }
+
+        @Override
+        public void onNotSignedUp() {
+            redirectSignupActivity();
+        }
+    }
+
+    protected void redirectSignupActivity() {
+        final Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

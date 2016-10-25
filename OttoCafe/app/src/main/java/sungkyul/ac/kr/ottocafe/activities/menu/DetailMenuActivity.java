@@ -9,8 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -38,6 +40,7 @@ public class DetailMenuActivity extends AppCompatActivity {
     final String TAG = "DetailMenuActivity";
 
     private FloatingActionButton fbtPay, fbtAdd;
+    private FloatingActionMenu  fbtParent;
     private TextView txtName, txtDescription;
     private ImageView imgMenu;
     private Spinner spnSize, spnNumber;
@@ -73,6 +76,8 @@ public class DetailMenuActivity extends AppCompatActivity {
                 sqlite.insert(txtName.getText().toString(), number, cost, imgPath);
                 sqlite.close();
                 // 장바구니 추가
+                Toast.makeText(getApplicationContext(),"장바구니에 추가됐습니다.",Toast.LENGTH_SHORT).show();
+                fbtParent.close(true);
             }
         });
 
@@ -83,7 +88,6 @@ public class DetailMenuActivity extends AppCompatActivity {
                 // 결제 했을 때 서버에 재고 수량 반영
                 setAutoStockManagement(txtName.getText().toString().trim());
                 startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
-
             }
         });
     }
@@ -97,6 +101,7 @@ public class DetailMenuActivity extends AppCompatActivity {
         txtDescription = (TextView) findViewById(R.id.txtDetailMenuComment);
         fbtPay = (FloatingActionButton) findViewById(R.id.fbtMenuPay);
         fbtAdd = (FloatingActionButton) findViewById(R.id.fbtMenuAdd);
+        fbtParent = (FloatingActionMenu) findViewById(R.id.menu);
         imgMenu = (ImageView) findViewById(R.id.imgDetailMenu);
         spnSize = (Spinner) findViewById(R.id.spnSIze);
         spnNumber = (Spinner) findViewById(R.id.spnNumber);

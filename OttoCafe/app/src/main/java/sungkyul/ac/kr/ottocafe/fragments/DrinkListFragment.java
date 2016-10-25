@@ -11,11 +11,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity;
 import sungkyul.ac.kr.ottocafe.adapter.MenuListAdapter;
 import sungkyul.ac.kr.ottocafe.items.MenuItem;
+import sungkyul.ac.kr.ottocafe.repo.ConnectService;
+import sungkyul.ac.kr.ottocafe.repo.RepoItem;
+import sungkyul.ac.kr.ottocafe.utils.CostChange;
 import sungkyul.ac.kr.ottocafe.utils.RecyclerViewOnItemClickListener;
+import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
 
 /**
  * Created by HunJin on 2016-09-12.
@@ -28,7 +38,6 @@ public class DrinkListFragment extends Fragment {
     private RecyclerView recyclerView;
 
     static final String TAG = "DrinkListFragment";
-
 
     @Nullable
     @Override
@@ -52,9 +61,46 @@ public class DrinkListFragment extends Fragment {
      * 아직 서버 API 준비 안됨
      */
     void getImage() {
-        menuListAdapter.addData(new MenuItem(0, "아이스 아메리카노", "4000", "원두를 갈아 만든 그냥 쓴 커피", "http://14.63.196.255/020cafe_image/blackcoffee.jpg"));
-        menuListAdapter.addData(new MenuItem(1, "카페라떼", "4500", "우유를 타서 부드럽게 마실 수 있는 커피", "http://14.63.196.255/020cafe_image/latte.jpg"));
-        menuListAdapter.addData(new MenuItem(2, "에스프레소", "4000", "유럽식 입맛을 즐기고 싶다면.. 에스프레소", "http://14.63.196.255/020cafe_image/espresso.jpg"));
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(StaticUrl.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+
+        ConnectService connectService = retrofit.create(ConnectService.class);
+        Call<RepoItem> call = connectService.getDrink();
+        call.enqueue(new Callback<RepoItem>() {
+            @Override
+            public void onResponse(Call<RepoItem> call, Response<RepoItem> response) {
+                RepoItem decode = response.body();
+                String err = decode.getErr();
+                Log.e(TAG, "errcode : " + err);
+                if (err.equals("200")) {
+                    for (int i = 0; i < decode.getResult().size(); i++) {
+                        int key = Integer.parseInt(decode.getResult().get(i).getKEY());
+                        String name = decode.getResult().get(i).getNAME();
+                        String cost = decode.getResult().get(i).getPRICE();
+                        String contents = "ㅁㄴㅇㄹㄴㅇㅁㄹㅇㄴㄹ"; // need contents
+                        String image = decode.getResult().get(i).getIMAGE();
+//                        image = StaticUrl.URL.substring(0,21) + image.substring(3,image.length());
+                        image = "http://14.63.196.255/020cafe_image/blackcoffee.jpg";
+//                        Log.e(TAG, key + " " + name + " " + price + " " + contents + " " + image);
+
+                        menuListAdapter.addData(new MenuItem(key, name, cost, contents, image));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RepoItem> call, Throwable t) {
+
+            }
+        });
+
+//        menuListAdapter.addData(new MenuItem(0, "아이스 아메리카노", "4000", "원두를 갈아 만든 그냥 쓴 커피", "http://14.63.196.255/020cafe_image/blackcoffee.jpg"));
+//        menuListAdapter.addData(new MenuItem(1, "카페라떼", "4500", "우유를 타서 부드럽게 마실 수 있는 커피", "http://14.63.196.255/020cafe_image/latte.jpg"));
+//        menuListAdapter.addData(new MenuItem(2, "에스프레소", "4000", "유럽식 입맛을 즐기고 싶다면.. 에스프레소", "http://14.63.196.255/020cafe_image/espresso.jpg"));
     }
 
     void initialization() {
@@ -73,7 +119,7 @@ public class DrinkListFragment extends Fragment {
                 it.putExtra("CoffeeKey", menuListAdapter.getItems().get(position).getmNumber());
                 it.putExtra("CoffeeName", menuListAdapter.getItems().get(position).getmName());
                 it.putExtra("CoffeeImage", menuListAdapter.getItems().get(position).getmImageUrl());
-                it.putExtra("CoffeePrice",menuListAdapter.getItems().get(position).getmCost());
+                it.putExtra("CoffeePrice", menuListAdapter.getItems().get(position).getmCost());
                 startActivity(it);
             }
 

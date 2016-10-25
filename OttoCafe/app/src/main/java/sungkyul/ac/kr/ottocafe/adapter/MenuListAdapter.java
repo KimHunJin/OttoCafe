@@ -15,6 +15,7 @@ import java.util.List;
 
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.items.MenuItem;
+import sungkyul.ac.kr.ottocafe.utils.CostChange;
 import sungkyul.ac.kr.ottocafe.utils.EndString;
 
 /**
@@ -64,7 +65,7 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ViewHo
         MenuItem listItem = items.get(position);
         Picasso.with(inflater.getContext()).load(listItem.getmImageUrl()).resize(1020, 492).centerCrop().into(viewHolder.imgItemMenu);
         viewHolder.txtItemMenuName.setText(EndString.endString(listItem.getmName().toString(), 15));
-        viewHolder.txtItemMenuCost.setText(listItem.getmCost());
+        viewHolder.txtItemMenuCost.setText(CostChange.changCost(listItem.getmCost()));
         viewHolder.txtItemMenuExplain.setText(EndString.endString(listItem.getmExplain().toString(), 25));
     }
 

@@ -48,12 +48,20 @@
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+    },
+    {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu_list_background.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\drawable\\menu_list_background.xml"
     },
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_full_material.xml",
@@ -84,6 +92,10 @@
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_light.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_plus_signin_btn_icon_light.xml"
+    },
+    {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_tab_indicator_material.xml"
     },
@@ -98,6 +110,10 @@
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_dark.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_plus_signin_btn_text_dark.xml"
     },
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
@@ -120,6 +136,10 @@
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_dark.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_google_signin_btn_text_dark.xml"
+    },
+    {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kakao_login_button_background.9.png",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.kakao.sdk\\util\\1.1.17\\res\\drawable\\kakao_login_button_background.9.png"
     },
@@ -140,6 +160,18 @@
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\drawable\\cart.png"
     },
     {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_dark.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\push_noti_icon.png",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\drawable\\push_noti_icon.png"
+    },
+    {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
@@ -150,6 +182,10 @@
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kakao_default_profile_image.png",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.kakao.sdk\\util\\1.1.17\\res\\drawable\\kakao_default_profile_image.png"
+    },
+    {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_dark.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.0.0\\res\\drawable\\common_plus_signin_btn_icon_dark.xml"
     },
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kakao_account_logo.png",

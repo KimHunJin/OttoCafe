@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-101:12
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-127:12
 	package
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:3:5-38
 		INJECTED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml
@@ -20,6 +20,8 @@ ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:5:5-60
 uses-permission#android.permission.INTERNET
 ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:7:5-67
 MERGED from [com.hkm.loyalslider:library:1.3.2] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.hkm.loyalslider\library\1.3.2\AndroidManifest.xml:10:5-67
+MERGED from [com.google.android.gms:play-services-gcm:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.0.0\AndroidManifest.xml:22:5-67
+MERGED from [com.google.android.gms:play-services-iid:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.0.0\AndroidManifest.xml:22:5-67
 	android:name
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:7:22-64
 uses-permission#android.permission.CAMERA
@@ -37,56 +39,68 @@ MERGED from [com.hkm.loyalslider:library:1.3.2] D:\user\OttoCafe\OttoCafe\app\bu
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:10:22-78
 uses-permission#com.google.android.c2dm.permission.RECEIVE
 ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:11:5-82
+MERGED from [com.google.android.gms:play-services-gcm:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.0.0\AndroidManifest.xml:21:5-82
+MERGED from [com.google.android.gms:play-services-iid:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.0.0\AndroidManifest.xml:21:5-82
 	android:name
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:11:22-79
 uses-feature#0x00020000
 ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:13:5-54
 	android:glEsVersion
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:13:19-51
+permission#sungkyul.ac.kr.ottocafe.permission.C2D_MESSAGE
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:16:5-17:46
+	android:protectionLevel
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:17:9-44
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:16:17-78
+uses-permission#sungkyul.ac.kr.ottocafe.permission.C2D_MESSAGE
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:19:5-85
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:19:22-83
 supports-screens
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:15:5-20:40
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:21:5-26:40
 	android:largeScreens
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:17:9-36
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:23:9-36
 	android:smallScreens
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:19:9-36
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:25:9-36
 	android:normalScreens
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:18:9-37
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:24:9-37
 	android:xlargeScreens
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:20:9-37
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:26:9-37
 	android:anyDensity
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:16:9-34
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:22:9-34
 uses-feature#android.hardware.camera.autofocus
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:21:5-23:36
-	android:required
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:23:9-33
-	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:22:9-57
-uses-feature#android.hardware.camera.front
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:24:5-26:36
-	android:required
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:26:9-33
-	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:25:9-53
-uses-feature#android.hardware.touchscreen
 ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:27:5-29:36
 	android:required
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:29:9-33
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:28:9-52
-uses-feature#android.hardware.touchscreen.multitouch
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:28:9-57
+uses-feature#android.hardware.camera.front
 ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:30:5-32:36
 	android:required
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:32:9-33
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:31:9-63
-uses-feature#android.hardware.touchscreen.multitouch.distinct
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:31:9-53
+uses-feature#android.hardware.touchscreen
 ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:33:5-35:36
 	android:required
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:35:9-33
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:34:9-72
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:34:9-52
+uses-feature#android.hardware.touchscreen.multitouch
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:36:5-38:36
+	android:required
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:38:9-33
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:37:9-63
+uses-feature#android.hardware.touchscreen.multitouch.distinct
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:39:5-41:36
+	android:required
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:41:9-33
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:40:9-72
 application
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:37:5-83:19
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:43:5-109:19
 MERGED from [com.github.clans:fab:1.6.4] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.github.clans\fab\1.6.4\AndroidManifest.xml:12:5-20
 MERGED from [com.android.support:design:23.2.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.4.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
@@ -94,109 +108,152 @@ MERGED from [com.android.support:appcompat-v7:23.4.0] D:\user\OttoCafe\OttoCafe\
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
 MERGED from [com.hkm.loyalslider:library:1.3.2] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.hkm.loyalslider\library\1.3.2\AndroidManifest.xml:13:5-15:44
+MERGED from [com.google.android.gms:play-services-gcm:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.0.0\AndroidManifest.xml:24:5-20
+MERGED from [com.google.android.gms:play-services-base:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-basement:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.0.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.firebase:firebase-common:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\AndroidManifest.xml:5:5-12:19
+MERGED from [com.google.android.gms:play-services-tasks:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.0.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-iid:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.0.0\AndroidManifest.xml:24:5-20
 MERGED from [com.astuetz:pagerslidingtabstrip:1.0.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\AndroidManifest.xml:4:5-19
 	android:label
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:41:9-41
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:47:9-41
 	android:supportsRtl
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:42:9-35
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:48:9-35
 	android:allowBackup
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:39:9-35
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:45:9-35
 	android:icon
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:40:9-43
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:46:9-43
 	android:theme
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:43:9-40
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:49:9-40
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:38:9-48
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:44:9-48
 activity#sungkyul.ac.kr.ottocafe.activities.intro.SplashActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:44:9-50:20
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:50:9-56:20
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:44:19-66
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:50:19-66
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:45:13-49:29
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:51:13-55:29
 action#android.intent.action.MAIN
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:46:17-69
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:52:17-69
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:46:25-66
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:52:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:48:17-77
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:54:17-77
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:48:27-74
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:54:27-74
 activity#sungkyul.ac.kr.ottocafe.activities.unity.UnityPlayerActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:51:9-74
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:57:9-74
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:51:19-71
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:57:19-71
 activity#sungkyul.ac.kr.ottocafe.activities.unity.UnityPlayerNativeActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:52:9-55:172
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:58:9-61:172
 	android:screenOrientation
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:54:13-55
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:60:13-55
 	android:launchMode
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:53:13-44
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:59:13-44
 	android:configChanges
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:55:13-170
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:61:13-170
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:52:19-77
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:58:19-77
 activity#sungkyul.ac.kr.ottocafe.activities.unity.UnityPlayerProxyActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:56:9-79
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:62:9-79
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:56:19-76
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:62:19-76
 activity#sungkyul.ac.kr.ottocafe.activities.member.LoginActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:57:9-69
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:63:9-69
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:57:19-66
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:63:19-66
 activity#sungkyul.ac.kr.ottocafe.activities.member.SignupActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:58:9-70
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:64:9-70
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:58:19-67
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:64:19-67
 uses-library#com.ti.s3d
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:60:9-62:40
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:66:9-68:40
 	android:required
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:62:13-37
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:68:13-37
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:61:13-38
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:67:13-38
 uses-library#com.osterhoutgroup.api.ext
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:64:9-66:40
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:70:9-72:40
 	android:required
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:66:13-37
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:72:13-37
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:65:13-54
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:71:13-54
 meta-data#com.kakao.sdk.AppKey
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:68:9-70:53
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:74:9-76:53
 	android:value
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:70:13-50
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:76:13-50
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:69:13-48
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:75:13-48
+meta-data#com.kakao.sdk.GcmProjectId
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:9-79:57
+	android:value
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:79:13-55
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:20-61
 meta-data#unityplayer.UnityActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:71:9-73:36
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:81:9-83:36
 	android:value
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:73:13-33
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:83:13-33
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:72:13-53
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:82:13-53
 meta-data#unityplayer.ForwardNativeEventsToDalvik
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:74:9-76:37
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:84:9-86:37
 	android:value
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:76:13-34
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:86:13-34
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:75:13-67
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:85:13-67
+meta-data#com.google.android.gms.version
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:88:9-89:69
+MERGED from [com.google.android.gms:play-services-basement:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.0.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:89:13-66
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:88:20-65
+receiver#sungkyul.ac.kr.ottocafe.activities.gcm.GcmBroadcastReceiver
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:91:9-100:20
+	android:permission
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:93:13-73
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:92:13-64
+intent-filter#com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION+sungkyul.ac.kr.ottocafe
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:94:13-99:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:95:17-81
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:95:25-78
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:96:17-86
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:96:25-83
+category#sungkyul.ac.kr.ottocafe
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:98:17-68
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:98:27-65
+service#sungkyul.ac.kr.ottocafe.activities.gcm.GcmIntentService
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:102:9-67
+	android:name
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:102:18-65
 activity#sungkyul.ac.kr.ottocafe.activities.main.MainActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:9-66
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:104:9-66
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:19-63
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:104:19-63
 activity#sungkyul.ac.kr.ottocafe.activities.menu.MenuActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:79:9-66
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:105:9-66
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:79:19-63
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:105:19-63
 activity#sungkyul.ac.kr.ottocafe.activities.main.CartActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:80:9-66
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:106:9-66
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:80:19-63
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:106:19-63
 activity#sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:81:9-75
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:107:9-75
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:81:19-72
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:107:19-72
 activity#sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:82:9-81
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:108:9-81
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:82:19-69
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:108:19-69
 uses-sdk
 INJECTED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.github.clans:fab:1.6.4] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.github.clans\fab\1.6.4\AndroidManifest.xml:8:5-10:41
@@ -215,6 +272,13 @@ MERGED from [com.kakao.sdk:friends:1.1.17] D:\user\OttoCafe\OttoCafe\app\build\i
 MERGED from [com.kakao.sdk:usermgmt:1.1.17] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.kakao.sdk\usermgmt\1.1.17\AndroidManifest.xml:11:5-13:41
 MERGED from [com.kakao.sdk:auth:1.1.17] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.kakao.sdk\auth\1.1.17\AndroidManifest.xml:11:5-13:41
 MERGED from [com.kakao.sdk:network:1.1.17] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.kakao.sdk\network\1.1.17\AndroidManifest.xml:8:5-10:41
+MERGED from [com.kakao.sdk:push:1.1.17] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.kakao.sdk\push\1.1.17\AndroidManifest.xml:11:5-13:41
+MERGED from [com.google.android.gms:play-services-gcm:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.0.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.0.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-common:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.0.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-iid:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.0.0\AndroidManifest.xml:18:5-42
 MERGED from [com.astuetz:pagerslidingtabstrip:1.0.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.astuetz\pagerslidingtabstrip\1.0.1\AndroidManifest.xml:2:5-72
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:23.4.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:23:9-75
@@ -225,4 +289,22 @@ MERGED from [com.astuetz:pagerslidingtabstrip:1.0.1] D:\user\OttoCafe\OttoCafe\a
 		INJECTED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml
 		INJECTED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-101:12 reason: com.hkm.slider requested WRITE_EXTERNAL_STORAGE
+IMPLIED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-127:12 reason: com.hkm.slider requested WRITE_EXTERNAL_STORAGE
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.0\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.0\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.0\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.0.0\AndroidManifest.xml:20:19-85
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\AndroidManifest.xml:7:9-11:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\AndroidManifest.xml:8:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\AndroidManifest.xml:10:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\AndroidManifest.xml:11:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:9.0.0] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.0.0\AndroidManifest.xml:9:13-58
