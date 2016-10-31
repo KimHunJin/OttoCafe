@@ -23,6 +23,12 @@ public class SQLite extends SQLiteOpenHelper{
                 " number INTEGER," +
                 " cost INTEGER," +
                 " img VARCHAR(100));");
+
+        db.execSQL("create table `cart_side` (key INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " name VARCHAR(30)," +
+                " number INTEGER," +
+                " cost INTEGER," +
+                " img VARCHAR(100));");
     }
 
     /**
@@ -33,6 +39,13 @@ public class SQLite extends SQLiteOpenHelper{
     public Cursor select() {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT * from `cart`";
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
+    }
+
+    public Cursor selectSide() {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * from `cart_side`";
         Cursor cursor = db.rawQuery(query,null);
         return cursor;
     }
@@ -52,6 +65,20 @@ public class SQLite extends SQLiteOpenHelper{
     }
 
     /**
+     * 장바구니에 들어갈 항목을 저장하는 메서드
+     * @param name
+     * @param number
+     * @param cost
+     * @param img
+     */
+    public void insertSide(String name, int number, int cost, String img) {
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "INSERT into `cart_side` values(null, '" + name + "', '" + number + "', '" + cost + "' , '" + img + "');";
+        db.execSQL(query);
+        db.close();
+    }
+
+    /**
      * 장바구니에서 항목을 삭제하는 메서드
      * @param name
      */
@@ -63,11 +90,24 @@ public class SQLite extends SQLiteOpenHelper{
     }
 
     /**
+     * 장바구니에서 항목을 삭제하는 메서드
+     * @param name
+     */
+    public void deleteSide(String name) {
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "DELETE from `cart_side` where `name`= '" + name + "';";
+        db.execSQL(query);
+        db.close();
+    }
+
+    /**
      * 장바구니의 모든 항목을 삭제하는 메서드
      */
     public void deleteAll() {
         SQLiteDatabase db = getWritableDatabase();
-        String query = "DELETE * from `cart`:";
+        String query = "DELETE from `cart`;";
+        db.execSQL(query);
+        query = "DELETE from `cart_side`;";
         db.execSQL(query);
         db.close();
     }

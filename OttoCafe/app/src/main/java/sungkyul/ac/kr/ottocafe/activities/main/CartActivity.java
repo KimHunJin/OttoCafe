@@ -1,6 +1,5 @@
 package sungkyul.ac.kr.ottocafe.activities.main;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,19 +8,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity;
+import sungkyul.ac.kr.ottocafe.repo.ConnectService;
+import sungkyul.ac.kr.ottocafe.repo.RepoItem;
 import sungkyul.ac.kr.ottocafe.sql.SQLite;
 import sungkyul.ac.kr.ottocafe.adapter.CartListAdapter;
 import sungkyul.ac.kr.ottocafe.items.CartItem;
 import sungkyul.ac.kr.ottocafe.utils.CostChange;
 import sungkyul.ac.kr.ottocafe.utils.RecyclerViewOnItemClickListener;
+import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
 
 /**
  * Created by HunJin on 2016-09-17.
@@ -32,14 +45,17 @@ public class CartActivity extends AppCompatActivity {
 
     static final String TAG = "CartActivity";
 
-    private RecyclerView rcv;
-    private CartListAdapter cartListAdapter;
+    private RecyclerView rcvDrink, rcvSide;
+    private CartListAdapter cartListAdapter, cartListSideAdapter;
     private ArrayList<CartItem> cartItemArrayList;
-    private Button btnCartCencel, btnCartPayment;
+    private Button btnCartClear, btnCartPayment;
+    private TextView txtDrinkCount, txtSideCount, txtTotalPrice;
+    private ImageView imgToolbarBack;
 
     private SQLite mSQLite;
     private AlertDialog ald;
     private AlertDialog.Builder aldB;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +65,10 @@ public class CartActivity extends AppCompatActivity {
         initialization();
 
         cartListAdapter = new CartListAdapter(getApplicationContext());
+        cartListSideAdapter = new CartListAdapter(getApplicationContext());
         addCart();
-        rcv.setAdapter(cartListAdapter);
+        rcvDrink.setAdapter(cartListAdapter);
+        rcvSide.setAdapter(cartListSideAdapter);
 
         listener();
     }
@@ -62,6 +80,7 @@ public class CartActivity extends AppCompatActivity {
         // get list using sqlite
         // SQLite를 활용해서 장바구니 리스트를 가져와야 함
 
+        int totalCost = 0;
         Cursor cursor = mSQLite.select();
         cartListAdapter.clear();
         int mNumber;
@@ -69,6 +88,7 @@ public class CartActivity extends AppCompatActivity {
         int mCost;
         int mCount;
         String mImgUrl;
+        int count = 0;
 
         while (cursor.moveToNext()) {
             mNumber = cursor.getInt(0);
@@ -78,18 +98,55 @@ public class CartActivity extends AppCompatActivity {
             mImgUrl = cursor.getString(4);
 
             cartListAdapter.addData(new CartItem(mNumber, mName, CostChange.changCost(mCount), CostChange.changCost(mCost), mImgUrl));
+            totalCost += mCount;
+            count++;
         }
+
+        txtDrinkCount.setText("음료 " + count);
+
+        Cursor cursorSIde = mSQLite.selectSide();
+        cartListSideAdapter.clear();
+
+        count = 0;
+        while (cursorSIde.moveToNext()) {
+            mNumber = cursor.getInt(0);
+            mName = cursor.getString(1);
+            mCost = cursor.getInt(2);
+            mCount = cursor.getInt(3);
+            mImgUrl = cursor.getString(4);
+
+            cartListSideAdapter.addData(new CartItem(mNumber, mName, CostChange.changCost(mCount), CostChange.changCost(mCost), mImgUrl));
+            totalCost += mCount;
+            count++;
+        }
+
+        txtSideCount.setText("사이드메뉴 " + count);
+        txtTotalPrice.setText(CostChange.changCost(totalCost));
     }
 
     /**
      * component initialization
      */
     void initialization() {
-        rcv = (RecyclerView) findViewById(R.id.rcv_cart);
-        rcv.setHasFixedSize(true);
-        rcv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        btnCartCencel = (Button) findViewById(R.id.btnCartCencel);
+        rcvDrink = (RecyclerView) findViewById(R.id.rcv_cart_drink);
+        rcvDrink.setHasFixedSize(true);
+        rcvDrink.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        rcvSide = (RecyclerView) findViewById(R.id.rcv_cart_side);
+        rcvSide.setHasFixedSize(true);
+        rcvSide.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        btnCartClear = (Button) findViewById(R.id.btnCartCencel);
         btnCartPayment = (Button) findViewById(R.id.btnCartPayment);
+
+        txtDrinkCount = (TextView) findViewById(R.id.txtCartDrinkCount);
+        txtSideCount = (TextView) findViewById(R.id.txtCartSideCount);
+        txtTotalPrice = (TextView) findViewById(R.id.txtCartTotalCost);
+
+        imgToolbarBack = (ImageView) findViewById(R.id.imgToolbarBackBack);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbarBack);
+        toolbar.setContentInsetsAbsolute(0, 0);
 
         cartItemArrayList = new ArrayList<>();
         mSQLite = new SQLite(getApplicationContext(), "menu.db", null, 1);
@@ -99,12 +156,11 @@ public class CartActivity extends AppCompatActivity {
      * recycler view listener
      */
     void listener() {
-        rcv.addOnItemTouchListener(new RecyclerViewOnItemClickListener(getApplicationContext(), rcv, new RecyclerViewOnItemClickListener.OnItemClickListener() {
+        rcvDrink.addOnItemTouchListener(new RecyclerViewOnItemClickListener(getApplicationContext(), rcvDrink, new RecyclerViewOnItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "click");
                 // intent detail menu
-
             }
 
             @Override
@@ -114,24 +170,52 @@ public class CartActivity extends AppCompatActivity {
             }
         }));
 
-        btnCartCencel.setOnClickListener(new View.OnClickListener() {
+        /**
+         * 클리어
+         */
+        btnCartClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                clear();
             }
         });
 
+        /**
+         * 장바구니 결제
+         */
         btnCartPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 장바구니에 담은 것들을 한번에 결제 (서버처리)
-                startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
+                for (int i = 0; i < cartListSideAdapter.getItemCount(); i++) {
+                    for (int j = 0; j < Integer.parseInt(cartListSideAdapter.getItems().get(i).getcCount().trim()); j++) {
+                        setAutoStockManagement(cartListSideAdapter.getItems().get(i).getcName());
+                    }
+                }
+
+                for (int i = 0; i < cartListAdapter.getItemCount(); i++) {
+                    for (int j = 0; j < Integer.parseInt(cartListAdapter.getItems().get(i).getcCount().trim()); j++) {
+                        setAutoStockManagement(cartListAdapter.getItems().get(i).getcName());
+                    }
+                }
+                clear();
+
+                Toast.makeText(getApplicationContext(), "결제되었습니다.", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
+            }
+        });
+
+        imgToolbarBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
 
     /**
      * show alert dialog
+     *
      * @param position
      */
     void dialog(final int position) {
@@ -163,4 +247,42 @@ public class CartActivity extends AppCompatActivity {
         mSQLite.close();
         finish();
     }
+
+    void clear() {
+        mSQLite.deleteAll();
+        cartListAdapter.clear();
+        txtTotalPrice.setText("0");
+        txtDrinkCount.setText("0");
+        txtSideCount.setText("0");
+    }
+
+    /**
+     * 음료 이름을 파라미터로 받아 재고 관리를 하는 메서드
+     *
+     * @param name
+     */
+    void setAutoStockManagement(String name) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(StaticUrl.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Map map = new HashMap();
+        map.put("MERCHANDISE_NAME", name);
+
+        ConnectService connectService = retrofit.create(ConnectService.class);
+        Call<RepoItem> call = connectService.setStockReflect(map);
+        call.enqueue(new Callback<RepoItem>() {
+            @Override
+            public void onResponse(Call<RepoItem> call, Response<RepoItem> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<RepoItem> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

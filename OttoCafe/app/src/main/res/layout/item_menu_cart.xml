@@ -44,7 +44,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/margin_item_menu"
-                android:text="개수 : "
+                android:text="수량 : "
+                android:textColor="@color/colorTextGray"
                 android:textSize="@dimen/cart_item_text_size" />
 
             <TextView
@@ -55,6 +56,7 @@
                 android:layout_marginLeft="@dimen/margin_item_menu"
                 android:layout_toRightOf="@id/txt"
                 android:text="2"
+                android:textColor="@color/colorTextGray"
                 android:textSize="@dimen/cart_item_text_size" />
 
             <TextView

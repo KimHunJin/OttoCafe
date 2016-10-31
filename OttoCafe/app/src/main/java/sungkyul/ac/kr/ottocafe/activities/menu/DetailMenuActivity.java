@@ -1,18 +1,18 @@
 package sungkyul.ac.kr.ottocafe.activities.menu;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -25,9 +25,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity;
-import sungkyul.ac.kr.ottocafe.sql.SQLite;
 import sungkyul.ac.kr.ottocafe.repo.ConnectService;
 import sungkyul.ac.kr.ottocafe.repo.RepoItem;
+import sungkyul.ac.kr.ottocafe.sql.SQLite;
 import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
 
 /**
@@ -39,17 +39,18 @@ public class DetailMenuActivity extends AppCompatActivity {
 
     final String TAG = "DetailMenuActivity";
 
-    private FloatingActionButton fbtPay, fbtAdd;
-    private FloatingActionMenu  fbtParent;
+    private Button btnPay, btnAdd;
     private TextView txtName, txtDescription;
-    private ImageView imgMenu;
+    private ImageView imgMenu, imgToolbarBack;
     private Spinner spnSize, spnNumber;
+    private Toolbar toolbar;
 
     private int price, upPrice;
     private String size;
     private int cost;
     private int number;
     private String imgPath;
+    private int separate;  // 0 : drink     1 : side
 
     String[] sizes = new String[]{"Small", "Middle", "Large"};
     String[] numbers = new String[]{"1", "2", "3", "4", "5", "6"};
@@ -68,26 +69,41 @@ public class DetailMenuActivity extends AppCompatActivity {
      * 버튼 클릭 리스너
      */
     void btnListener() {
-        fbtAdd.setOnClickListener(new View.OnClickListener() {
+        /**
+         * 장바구니에 추가 리스너
+         */
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SQLite sqlite = new SQLite(getApplicationContext(), "menu.db", null, 1);
-                cost = upPrice * number;
-                sqlite.insert(txtName.getText().toString(), number, cost, imgPath);
-                sqlite.close();
-                // 장바구니 추가
-                Toast.makeText(getApplicationContext(),"장바구니에 추가됐습니다.",Toast.LENGTH_SHORT).show();
-                fbtParent.close(true);
+                if(separate == 0) {
+                    cost = upPrice * number;
+                    sqlite.insert(txtName.getText().toString(), number, cost, imgPath);
+                    sqlite.close();
+                } else {
+                    cost = upPrice * number;
+                    sqlite.insertSide(txtName.getText().toString(), number, cost, imgPath);
+                    sqlite.close();
+                }
+
+                Toast.makeText(getApplicationContext(), "장바구니에 추가됐습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        fbtPay.setOnClickListener(new View.OnClickListener() {
+        btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 결제
                 // 결제 했을 때 서버에 재고 수량 반영
                 setAutoStockManagement(txtName.getText().toString().trim());
                 startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
+            }
+        });
+
+        imgToolbarBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -99,12 +115,15 @@ public class DetailMenuActivity extends AppCompatActivity {
     void initialization() {
         txtName = (TextView) findViewById(R.id.txtDetailMenuName);
         txtDescription = (TextView) findViewById(R.id.txtDetailMenuComment);
-        fbtPay = (FloatingActionButton) findViewById(R.id.fbtMenuPay);
-        fbtAdd = (FloatingActionButton) findViewById(R.id.fbtMenuAdd);
-        fbtParent = (FloatingActionMenu) findViewById(R.id.menu);
+        btnPay = (Button) findViewById(R.id.btnDetailPayment);
+        btnAdd = (Button) findViewById(R.id.btnDetailAddCart);
         imgMenu = (ImageView) findViewById(R.id.imgDetailMenu);
+        imgToolbarBack = (ImageView) findViewById(R.id.imgToolbarBackBack);
         spnSize = (Spinner) findViewById(R.id.spnSIze);
         spnNumber = (Spinner) findViewById(R.id.spnNumber);
+        toolbar = (Toolbar) findViewById(R.id.toolbarBack);
+        toolbar.setContentInsetsAbsolute(0, 0);
+        separate = new Intent().getExtras().getInt("separate");
         spinnerSetting();
 
     }

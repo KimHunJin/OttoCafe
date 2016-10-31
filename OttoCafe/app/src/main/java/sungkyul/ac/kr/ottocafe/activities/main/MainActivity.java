@@ -5,10 +5,8 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v4.widget.DrawerLayout;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,52 +16,51 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.hkm.slider.Animations.DescriptionAnimation;
 import com.hkm.slider.SliderLayout;
 import com.hkm.slider.SliderTypes.BaseSliderView;
 import com.hkm.slider.SliderTypes.TextSliderView;
 import com.hkm.slider.TransformerL;
 import com.hkm.slider.Tricks.ViewPagerEx;
-import com.kakao.auth.ApiResponseCallback;
-import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
-import com.kakao.push.PushActivity;
-import com.kakao.push.PushMessageBuilder;
-import com.kakao.push.PushService;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
-import com.kakao.util.helper.SharedPreferencesCache;
-import com.kakao.util.helper.log.Logger;
 import com.squareup.picasso.Picasso;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.UUID;
+import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.R;
-import sungkyul.ac.kr.ottocafe.activities.gcm.PushMainActivity;
 import sungkyul.ac.kr.ottocafe.activities.kakao.BaseActivity;
-import sungkyul.ac.kr.ottocafe.activities.member.LoginActivity;
-import sungkyul.ac.kr.ottocafe.activities.member.SignupActivity;
 import sungkyul.ac.kr.ottocafe.activities.menu.MenuActivity;
 import sungkyul.ac.kr.ottocafe.activities.unity.UnityPlayerActivity;
 import sungkyul.ac.kr.ottocafe.adapter.NavListAdapter;
 import sungkyul.ac.kr.ottocafe.items.NavItem;
+import sungkyul.ac.kr.ottocafe.repo.ConnectService;
+import sungkyul.ac.kr.ottocafe.repo.RepoItem;
 import sungkyul.ac.kr.ottocafe.utils.BackPressCloseHandler;
 import sungkyul.ac.kr.ottocafe.utils.DataProvider;
 import sungkyul.ac.kr.ottocafe.utils.NumZeroForm;
 import sungkyul.ac.kr.ottocafe.utils.SaveDataSession;
+import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
 
 /**
  * Created by HunJin on 2016-09-09.
  * <p>
  * main activity
  */
-public class MainActivity extends PushActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class MainActivity extends BaseActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private static final String TAG = "MainActivity";
     protected static final String PROPERTY_DEVICE_ID = "device_id";
@@ -84,87 +81,14 @@ public class MainActivity extends PushActivity implements BaseSliderView.OnSlide
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.e(TAG,"MainActivity Start");
+
         initialization();
         setData();
         setupSlider();
         getMyInfo();
         navClick();
 
-    }
-
-    @Override
-    protected void redirectLoginActivity() {
-        final Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    protected String getDeviceUUID() {
-        if (deviceUUID != null)
-            return deviceUUID;
-
-        final SharedPreferencesCache cache = Session.getAppCache();
-        final String id = cache.getString(PROPERTY_DEVICE_ID);
-
-        if (id != null) {
-            deviceUUID = id;
-            return deviceUUID;
-        } else {
-            // 적절한 알고리즘으로 기기 고유 ID를 생성한다.
-            // 기기 고유 ID 생성을 위해 사용자 개인정보를 사용할 경우는 사용자 동의를 받도록 한다.
-            UUID uuid = null;
-            final String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-            try {
-                if (!"9774d56d682e549c".equals(androidId)) {
-                    uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8"));
-                } else {
-                    final String deviceId = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE)).getDeviceId();
-                    uuid = deviceId != null ? UUID.nameUUIDFromBytes(deviceId.getBytes("utf8")) : UUID.randomUUID();
-                }
-            } catch (UnsupportedEncodingException e) {
-                throw new RuntimeException(e);
-            }
-
-            Bundle bundle = new Bundle();
-            bundle.putString(PROPERTY_DEVICE_ID, uuid.toString());
-            cache.save(bundle);
-
-            deviceUUID = uuid.toString();
-            return deviceUUID;
-        }
-    }
-
-    private void deregisterPushTokenAll() {
-        PushService.deregisterPushTokenAll(new KakaoPushResponseCallback<Boolean>() {
-            @Override
-            public void onSuccess(Boolean result) {
-                Toast.makeText(getApplicationContext(), "succeeded to deregister all push token of this user", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void deregisterPushToken() {
-        PushService.deregisterPushToken(new KakaoPushResponseCallback<Boolean>() {
-            @Override
-            public void onSuccess(Boolean result) {
-                Toast.makeText(getApplicationContext(), "succeeded to deregister push token", Toast.LENGTH_SHORT).show();
-            }
-        }, deviceUUID);
-    }
-
-    private void sendPushMessageToMe() {
-        final String testMessage = new PushMessageBuilder("{\"content\":\"테스트 메시지\", \"friend_id\":1, \"noti\":\"test\"}").toString();
-        if (testMessage == null) {
-            Logger.w("failed to create push Message");
-        } else {
-            PushService.sendPushMessage(new KakaoPushResponseCallback<Boolean>() {
-                @Override
-                public void onSuccess(Boolean result) {
-                    Toast.makeText(getApplicationContext(), "succeeded to send message", Toast.LENGTH_SHORT).show();
-                }
-            }, testMessage, deviceUUID);
-        }
     }
 
     /**
@@ -198,6 +122,64 @@ public class MainActivity extends PushActivity implements BaseSliderView.OnSlide
                 SaveDataSession.setAppPreferences(getApplicationContext(), "UserId", profile.getId() + "");
                 txtNavName.setText(profile.getNickname().toString());
                 Picasso.with(getApplicationContext()).load(profile.getThumbnailImagePath()).into(imgNavThumbnail);
+
+                FirebaseMessaging.getInstance().subscribeToTopic("news");
+                String token = FirebaseInstanceId.getInstance().getToken();
+
+                insertProfile(profile.getId(),token);
+            }
+        });
+    }
+
+    private void insertProfile(final long id, String token) {
+
+        Map map = new HashMap();
+        map.put("id",id+"");
+        map.put("token",token);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(StaticUrl.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ConnectService connectService = retrofit.create(ConnectService.class);
+        Call<RepoItem> call = connectService.setInsert(map);
+        call.enqueue(new Callback<RepoItem>() {
+            @Override
+            public void onResponse(Call<RepoItem> call, Response<RepoItem> response) {
+                Log.e(TAG,"success insert");
+                getPoint(id);
+            }
+
+            @Override
+            public void onFailure(Call<RepoItem> call, Throwable t) {
+                Log.e(TAG,t.getMessage());
+            }
+        });
+    }
+
+    void getPoint(long id) {
+        Map map = new HashMap();
+        map.put("name",id+"");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(StaticUrl.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ConnectService connectService = retrofit.create(ConnectService.class);
+        Call<RepoItem> call = connectService.getInfo(map);
+        call.enqueue(new Callback<RepoItem>() {
+            @Override
+            public void onResponse(Call<RepoItem> call, Response<RepoItem> response) {
+                Log.e(TAG,"success point");
+                RepoItem decode = response.body();
+                txtNavPoint.setText(decode.getResult().get(0).getPOINT());
+            }
+
+            @Override
+            public void onFailure(Call<RepoItem> call, Throwable t) {
+                Log.e(TAG,t.getMessage());
             }
         });
     }
@@ -265,6 +247,7 @@ public class MainActivity extends PushActivity implements BaseSliderView.OnSlide
 
                             @Override
                             public void onSuccess(Long result) {
+                                Log.e(TAG, result + "");
                                 redirectLoginActivity();
                             }
                         });
@@ -377,26 +360,4 @@ public class MainActivity extends PushActivity implements BaseSliderView.OnSlide
         Toast.makeText(getApplicationContext(), "한 번 더 누르면 앱이 종료됩니다", Toast.LENGTH_SHORT).show();
     }
 
-    private abstract class KakaoPushResponseCallback<T> extends ApiResponseCallback<T> {
-        @Override
-        public void onFailure(ErrorResult errorResult) {
-            Toast.makeText(self, "failure : " + errorResult, Toast.LENGTH_LONG).show();
-        }
-
-        @Override
-        public void onSessionClosed(ErrorResult errorResult) {
-            redirectLoginActivity();
-        }
-
-        @Override
-        public void onNotSignedUp() {
-            redirectSignupActivity();
-        }
-    }
-
-    protected void redirectSignupActivity() {
-        final Intent intent = new Intent(this, SignupActivity.class);
-        startActivity(intent);
-        finish();
-    }
 }

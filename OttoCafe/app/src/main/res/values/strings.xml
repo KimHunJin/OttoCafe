@@ -4,5 +4,7 @@
     <string name="kakao_app_key">389e4ca12a13e2c188d14c82a206c03e</string>
     <string name="gcm_project_number">dogwood-outcome-146916</string>
     <string name="notification_title">알람</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
 
 </resources>

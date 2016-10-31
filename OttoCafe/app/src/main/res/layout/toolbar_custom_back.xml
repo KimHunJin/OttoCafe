@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbarBack"
+    android:layout_width="match_parent"
+    android:layout_height="42dp"
+    android:background="@color/colorAccent"
+    android:fitsSystemWindows="true"
+    android:minHeight="?attr/actionBarSize">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imgToolbarBackBack"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/txtToolBarBackTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="상품정보"
+            android:textColor="@color/colorWhite"
+            android:textSize="21sp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

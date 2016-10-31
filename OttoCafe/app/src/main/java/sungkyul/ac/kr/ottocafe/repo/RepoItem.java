@@ -9,15 +9,13 @@ import java.util.List;
 public class RepoItem {
     String err;
     String USER_ID;
-    String USER_NAME;
-    String THUMBNAIL_IMAGE_PATH;
-    List<DrinkListItems> result;
+    List<SubItem> result;
 
     public String getErr() {
         return err;
     }
 
-    public List<DrinkListItems> getResult() {
+    public List<SubItem> getResult() {
         return result;
     }
 
@@ -25,11 +23,4 @@ public class RepoItem {
         return USER_ID;
     }
 
-    public String getUSER_NAME() {
-        return USER_NAME;
-    }
-
-    public String getTHUMBNAIL_IMAGE_PATH() {
-        return THUMBNAIL_IMAGE_PATH;
-    }
 }

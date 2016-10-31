@@ -2,9 +2,12 @@ package sungkyul.ac.kr.ottocafe.activities.kakao;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 
 import sungkyul.ac.kr.ottocafe.activities.main.MainActivity;
 import sungkyul.ac.kr.ottocafe.activities.member.LoginActivity;
+import sungkyul.ac.kr.ottocafe.activities.member.SignupActivity;
+import sungkyul.ac.kr.ottocafe.activities.menu.MenuActivity;
 import sungkyul.ac.kr.ottocafe.utils.GlobalApplication;
 
 /**
@@ -12,7 +15,7 @@ import sungkyul.ac.kr.ottocafe.utils.GlobalApplication;
  *
  * kakao base activity overriding by activity
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
     protected static Activity self;
 
     @Override
@@ -48,8 +51,15 @@ public class BaseActivity extends Activity {
         finish();
     }
 
+    protected void redirectSignupActivity() {
+        final Intent intent = new Intent(this, SignupActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
+    }
+
     protected void redirectMainActivity() {
-        final Intent intent = new Intent(this, MainActivity.class);
+        final Intent intent = new Intent(this, MenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();

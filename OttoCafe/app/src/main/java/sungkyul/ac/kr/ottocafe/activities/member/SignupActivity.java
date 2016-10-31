@@ -4,25 +4,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.kakao.auth.ErrorCode;
-import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.helper.log.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.activities.kakao.BaseActivity;
-import sungkyul.ac.kr.ottocafe.repo.ConnectService;
-import sungkyul.ac.kr.ottocafe.repo.RepoItem;
-import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
 
 /**
  * Created by HunJin on 2016-09-08.
@@ -41,6 +29,7 @@ public class SignupActivity extends BaseActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e(TAG,"before requestMe");
         requestMe();
     }
 
@@ -51,6 +40,7 @@ public class SignupActivity extends BaseActivity {
         UserManagement.requestMe(new MeResponseCallback() {
             @Override
             public void onFailure(ErrorResult errorResult) {
+                Log.e(TAG,"Failed");
                 String message = "failed to get user info. msg=" + errorResult;
                 Logger.d(message);
 
@@ -71,40 +61,13 @@ public class SignupActivity extends BaseActivity {
 
             @Override
             public void onSuccess(UserProfile userProfile ) {
-                Logger.d("UserProfile : " + userProfile);
-                insertProfile(userProfile.getId(),userProfile.getNickname(),userProfile.getThumbnailImagePath());
+                Log.e(TAG, "Set Profile");
+                redirectMainActivity();
             }
 
             @Override
             public void onNotSignedUp() {
                 Log.e(TAG,"not singed up");
-            }
-        });
-    }
-
-    private void insertProfile(long id, String name, String imgPath) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(StaticUrl.URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        Map map = new HashMap();
-        Log.e(TAG, Session.getCurrentSession().getAppKey());
-        map.put("id",id);
-        map.put("name",name);
-        map.put("image",imgPath);
-
-        ConnectService connectService = retrofit.create(ConnectService.class);
-        Call<RepoItem> call = connectService.setInsert(map);
-        call.enqueue(new Callback<RepoItem>() {
-            @Override
-            public void onResponse(Call<RepoItem> call, Response<RepoItem> response) {
-                redirectMainActivity();
-            }
-
-            @Override
-            public void onFailure(Call<RepoItem> call, Throwable t) {
-
             }
         });
     }

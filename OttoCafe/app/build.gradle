@@ -24,9 +24,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
 
-
+    compile 'com.google.firebase:firebase-core:9.6.1'
+    compile 'com.google.firebase:firebase-messaging:9.6.1'
     // gcm
-    compile 'com.google.android.gms:play-services-gcm:9.0.0'
+//    compile 'com.google.android.gms:play-services-gcm:9.0.0'
 
     // submenu floating action button
     compile 'com.github.clans:fab:1.6.4'
@@ -42,9 +43,9 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     // okhttp3
-    compile 'com.squareup.okhttp3:okhttp:3.0.1'
-    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.0.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
 
     // gson
     compile 'com.google.code.gson:gson:2.5'
@@ -63,8 +64,9 @@ dependencies {
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaolink', version: project.KAKAO_SDK_VERSION
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
     compile group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
-    compile group: project.KAKAO_SDK_GROUP, name: 'push', version: project.KAKAO_SDK_VERSION
 
     // pager sliding tab strip
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
 }
+
+apply plugin: 'com.google.gms.google-services'

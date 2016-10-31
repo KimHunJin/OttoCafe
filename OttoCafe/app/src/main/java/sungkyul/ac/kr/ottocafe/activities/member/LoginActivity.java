@@ -54,7 +54,7 @@ public class LoginActivity extends BaseActivity {
         @Override
         public void onSessionOpened() {
             Log.e(TAG,"onSessionOpen");
-            redirectMainActivity();
+            redirectSignupActivity();
         }
 
         @Override

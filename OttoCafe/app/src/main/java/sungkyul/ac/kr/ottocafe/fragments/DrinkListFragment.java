@@ -3,6 +3,7 @@ package sungkyul.ac.kr.ottocafe.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.R;
 import sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity;
+import sungkyul.ac.kr.ottocafe.activities.unity.UnityPlayerActivity;
 import sungkyul.ac.kr.ottocafe.adapter.MenuListAdapter;
 import sungkyul.ac.kr.ottocafe.items.MenuItem;
 import sungkyul.ac.kr.ottocafe.repo.ConnectService;
@@ -81,13 +83,17 @@ public class DrinkListFragment extends Fragment {
                         int key = Integer.parseInt(decode.getResult().get(i).getKEY());
                         String name = decode.getResult().get(i).getNAME();
                         String cost = decode.getResult().get(i).getPRICE();
-                        String contents = "ㅁㄴㅇㄹㄴㅇㅁㄹㅇㄴㄹ"; // need contents
+                        String contents = "설명입니다. 아직 미완성 입니다."; // need contents
                         String image = decode.getResult().get(i).getIMAGE();
-//                        image = StaticUrl.URL.substring(0,21) + image.substring(3,image.length());
-                        image = "http://14.63.196.255/020cafe_image/blackcoffee.jpg";
+                        if (image == null) {
+                            image = "http://14.63.196.255:8080/020cafe/image/logo.png";
+                        } else {
+                            image = "http://14.63.196.255:8080/020cafe/" + image.substring(3, image.length());
+                        }
+
 //                        Log.e(TAG, key + " " + name + " " + price + " " + contents + " " + image);
 
-                        menuListAdapter.addData(new MenuItem(key, name, cost, contents, image));
+                        menuListAdapter.addData(new MenuItem(i % 2, key, name, cost, contents, image));
                     }
                 }
             }
@@ -120,6 +126,7 @@ public class DrinkListFragment extends Fragment {
                 it.putExtra("CoffeeName", menuListAdapter.getItems().get(position).getmName());
                 it.putExtra("CoffeeImage", menuListAdapter.getItems().get(position).getmImageUrl());
                 it.putExtra("CoffeePrice", menuListAdapter.getItems().get(position).getmCost());
+                it.putExtra("separate",0);
                 startActivity(it);
             }
 

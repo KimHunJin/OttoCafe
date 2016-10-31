@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="42dp"
+    android:background="@color/colorAccent"
+    android:fitsSystemWindows="true"
+    android:minHeight="?attr/actionBarSize">
+
+    <RelativeLayout
+        android:id="@+id/linMainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imgNav"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/main_menu" />
+
+        <TextView
+            android:id="@+id/txtToolBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="OTTO CAFE"
+            android:textColor="@color/colorWhite"
+            android:textSize="21sp" />
+
+        <ImageView
+            android:id="@+id/imgBasket"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/main_basket" />
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

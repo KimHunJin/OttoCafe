@@ -7,11 +7,16 @@ package sungkyul.ac.kr.ottocafe.items;
  */
 public class MenuItem {
 
+    private int type;
     private int mNumber;
     private String mName;
     private String mCost;
     private String mExplain;
     private String mImageUrl;
+
+    public int getType() {
+        return type;
+    }
 
     public int getmNumber() {
         return mNumber;
@@ -33,7 +38,8 @@ public class MenuItem {
         return mImageUrl;
     }
 
-    public MenuItem(int number, String name, String cost, String explain, String url) {
+    public MenuItem(int type, int number, String name, String cost, String explain, String url) {
+        this.type = type;
         this.mNumber = number;
         this.mName = name;
         this.mCost = cost;

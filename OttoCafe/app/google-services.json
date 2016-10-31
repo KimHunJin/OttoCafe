@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "100399294667",
+    "firebase_url": "https://ottocafe-227dc.firebaseio.com",
+    "project_id": "ottocafe-227dc",
+    "storage_bucket": "ottocafe-227dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100399294667:android:e1057ef014244a83",
+        "android_client_info": {
+          "package_name": "sungkyul.ac.kr.ottocafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100399294667-jg5l9a577so7gq7t47gg6rp579t3cg3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYDBub-dsUQOpiHmSl3uowf2Fjd9Nqc24"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
