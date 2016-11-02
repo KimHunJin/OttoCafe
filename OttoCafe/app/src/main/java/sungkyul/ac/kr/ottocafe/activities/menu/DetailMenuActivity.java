@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +29,8 @@ import sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity;
 import sungkyul.ac.kr.ottocafe.repo.ConnectService;
 import sungkyul.ac.kr.ottocafe.repo.RepoItem;
 import sungkyul.ac.kr.ottocafe.sql.SQLite;
+import sungkyul.ac.kr.ottocafe.utils.CostChange;
+import sungkyul.ac.kr.ottocafe.utils.SaveDataSession;
 import sungkyul.ac.kr.ottocafe.utils.StaticUrl;
 
 /**
@@ -40,7 +43,7 @@ public class DetailMenuActivity extends AppCompatActivity {
     final String TAG = "DetailMenuActivity";
 
     private Button btnPay, btnAdd;
-    private TextView txtName, txtDescription;
+    private TextView txtName, txtExplanation, txtTotalCost;
     private ImageView imgMenu, imgToolbarBack;
     private Spinner spnSize, spnNumber;
     private Toolbar toolbar;
@@ -76,7 +79,7 @@ public class DetailMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SQLite sqlite = new SQLite(getApplicationContext(), "menu.db", null, 1);
-                if(separate == 0) {
+                if (separate == 0) {
                     cost = upPrice * number;
                     sqlite.insert(txtName.getText().toString(), number, cost, imgPath);
                     sqlite.close();
@@ -96,6 +99,7 @@ public class DetailMenuActivity extends AppCompatActivity {
                 // 결제
                 // 결제 했을 때 서버에 재고 수량 반영
                 setAutoStockManagement(txtName.getText().toString().trim());
+                setOrderList(SaveDataSession.getAppPreferences(getApplicationContext(), "UserId"), txtName.getText().toString(), "1", upPrice/100+"");
                 startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
             }
         });
@@ -114,7 +118,8 @@ public class DetailMenuActivity extends AppCompatActivity {
      */
     void initialization() {
         txtName = (TextView) findViewById(R.id.txtDetailMenuName);
-        txtDescription = (TextView) findViewById(R.id.txtDetailMenuComment);
+        txtExplanation = (TextView) findViewById(R.id.txtDetailMenuComment);
+        txtTotalCost = (TextView) findViewById(R.id.txtDetailTotalCost);
         btnPay = (Button) findViewById(R.id.btnDetailPayment);
         btnAdd = (Button) findViewById(R.id.btnDetailAddCart);
         imgMenu = (ImageView) findViewById(R.id.imgDetailMenu);
@@ -123,7 +128,6 @@ public class DetailMenuActivity extends AppCompatActivity {
         spnNumber = (Spinner) findViewById(R.id.spnNumber);
         toolbar = (Toolbar) findViewById(R.id.toolbarBack);
         toolbar.setContentInsetsAbsolute(0, 0);
-        separate = new Intent().getExtras().getInt("separate");
         spinnerSetting();
 
     }
@@ -152,14 +156,17 @@ public class DetailMenuActivity extends AppCompatActivity {
                 switch (position) {
                     case 0: {
                         upPrice = price;
+                        txtTotalCost.setText(CostChange.changCost(upPrice));
                         break;
                     }
                     case 1: {
                         upPrice = price + 500;
+                        txtTotalCost.setText(CostChange.changCost(upPrice));
                         break;
                     }
                     case 2: {
                         upPrice = price + 1000;
+                        txtTotalCost.setText(CostChange.changCost(upPrice));
                         break;
                     }
                 }
@@ -175,6 +182,7 @@ public class DetailMenuActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 number = Integer.parseInt(numbers[position]);
+                txtTotalCost.setText(CostChange.changCost(upPrice*number));
             }
 
             @Override
@@ -214,8 +222,43 @@ public class DetailMenuActivity extends AppCompatActivity {
         });
     }
 
+    void setOrderList(String key, String menu, String count, String price) {
+        Map map = new HashMap();
+        map.put("id", key);
+        map.put("menus", menu);
+        map.put("counts", count);
+        map.put("cost", price);
+
+        Log.e(TAG, map.get("id")+"");
+        Log.e(TAG, map.get("menus")+"");
+        Log.e(TAG, map.get("counts")+"");
+        Log.e(TAG, map.get("cost")+"");
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(StaticUrl.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ConnectService connectService = retrofit.create(ConnectService.class);
+        Call<RepoItem> call = connectService.setOrder(map);
+        call.enqueue(new Callback<RepoItem>() {
+            @Override
+            public void onResponse(Call<RepoItem> call, Response<RepoItem> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<RepoItem> call, Throwable t) {
+
+            }
+        });
+    }
+
+
     /**
      * CoffeeKey
+     * CoffeePrice
+     * CoffeeExplanation
      * CoffeeName
      * CoffeeImage
      */
@@ -226,6 +269,9 @@ public class DetailMenuActivity extends AppCompatActivity {
         imgPath = it.getExtras().getString("CoffeeImage");
         // key를 이용하여 정보를 가져온다. (retrofit 사용하 예정)
         txtName.setText(it.getExtras().getString("CoffeeName"));
+        txtExplanation.setText(it.getExtras().getString("CoffeeExplanation"));
+        separate = it.getExtras().getInt("separate");
+        txtTotalCost.setText(CostChange.changCost(price));
         Picasso.with(getApplicationContext()).load(it.getExtras().getString("CoffeeImage")).into(imgMenu);
     }
 }

@@ -7,7 +7,9 @@
     <TextView
         android:id="@+id/txtNavListContent"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         android:textColor="@color/colorBlack"
         android:textSize="18sp" />

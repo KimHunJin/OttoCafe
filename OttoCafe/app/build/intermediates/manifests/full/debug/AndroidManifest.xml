@@ -108,9 +108,8 @@
             android:name="unityplayer.ForwardNativeEventsToDalvik"
             android:value="false" />
 
-        <activity android:name="sungkyul.ac.kr.ottocafe.activities.main.MainActivity" />
-        <activity android:name="sungkyul.ac.kr.ottocafe.activities.menu.MenuActivity" />
-        <activity android:name="sungkyul.ac.kr.ottocafe.activities.main.CartActivity" />
+        <activity android:name="sungkyul.ac.kr.ottocafe.MainActivity" />
+        <activity android:name="sungkyul.ac.kr.ottocafe.activities.menu.CartActivity" />
         <activity android:name="sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity" />
         <activity android:name="sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity" />
 

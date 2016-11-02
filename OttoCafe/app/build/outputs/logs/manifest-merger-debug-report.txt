@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-116:12
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-115:12
 	package
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:3:5-38
 		INJECTED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml
@@ -88,7 +88,7 @@ ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:32:5-34:36
 	android:name
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:33:9-72
 application
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:36:5-98:19
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:36:5-97:19
 MERGED from [com.google.firebase:firebase-core:9.6.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.6.1\AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics:9.6.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.6.1\AndroidManifest.xml:24:5-33:19
 MERGED from [com.google.android.gms:play-services-basement:9.6.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.6.1\AndroidManifest.xml:19:5-21:19
@@ -187,46 +187,42 @@ ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:74:9-76:37
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:76:13-34
 	android:name
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:75:13-67
-activity#sungkyul.ac.kr.ottocafe.activities.main.MainActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:9-66
+activity#sungkyul.ac.kr.ottocafe.MainActivity
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:9-50
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:19-63
-activity#sungkyul.ac.kr.ottocafe.activities.menu.MenuActivity
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:78:19-47
+activity#sungkyul.ac.kr.ottocafe.activities.menu.CartActivity
 ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:79:9-66
 	android:name
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:79:19-63
-activity#sungkyul.ac.kr.ottocafe.activities.main.CartActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:80:9-66
-	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:80:19-63
 activity#sungkyul.ac.kr.ottocafe.activities.credit.NicePayDemoActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:81:9-75
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:80:9-75
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:81:19-72
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:80:19-72
 activity#sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:82:9-81
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:81:9-81
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:82:19-69
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:81:19-69
 service#sungkyul.ac.kr.ottocafe.message.MyFirebaseMessagingService
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:84:9-89:19
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:83:9-88:19
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:85:13-63
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:84:13-63
 intent-filter#com.google.firebase.MESSAGING_EVENT
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:86:13-88:29
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:85:13-87:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:87:17-77
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:86:17-77
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:87:25-75
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:86:25-75
 service#sungkyul.ac.kr.ottocafe.message.MyFirebaseInstanceIDService
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:91:9-96:19
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:90:9-95:19
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:92:13-64
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:91:13-64
 intent-filter#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:93:13-95:29
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:92:13-94:29
 action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:94:17-79
+ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:93:17-79
 	android:name
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:94:25-77
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:93:25-77
 uses-sdk
 INJECTED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.firebase:firebase-core:9.6.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-core\9.6.1\AndroidManifest.xml:4:5-42
@@ -371,4 +367,4 @@ ADDED from [com.google.firebase:firebase-messaging:9.6.1] D:\user\OttoCafe\OttoC
 	android:name
 		ADDED from [com.google.firebase:firebase-messaging:9.6.1] D:\user\OttoCafe\OttoCafe\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.6.1\AndroidManifest.xml:23:18-87
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-116:12 reason: com.hkm.slider requested WRITE_EXTERNAL_STORAGE
+IMPLIED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:2:1-115:12 reason: com.hkm.slider requested WRITE_EXTERNAL_STORAGE

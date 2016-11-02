@@ -12,5 +12,6 @@
     <color name="colorCostPink">#E55D87</color>
     <color name="colorRightGray">#eeeeee</color>
     <color name="colorUpdateToolbar">#0097a7</color>
+    <color name="colorInvisibleBlue">#880bdbf2</color>
     <color name="colorBrightGray">#BBBBBB</color>
 </resources>

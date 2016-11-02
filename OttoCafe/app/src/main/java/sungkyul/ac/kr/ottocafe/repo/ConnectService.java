@@ -30,7 +30,16 @@ public interface ConnectService {
             @FieldMap Map<String, String> setStock
     );
 
+    @FormUrlEncoded
+    @POST("order_insert.php")
+    Call<RepoItem> setOrder(
+            @FieldMap Map<String, String> setStock
+    );
+
     @GET("merchandise_search_list.php")
     Call<RepoItem> getDrink();
+
+    @GET("merchandise_side_list.php")
+    Call<RepoItem> getSide();
 
 }

@@ -83,7 +83,8 @@ public class DrinkListFragment extends Fragment {
                         int key = Integer.parseInt(decode.getResult().get(i).getKEY());
                         String name = decode.getResult().get(i).getNAME();
                         String cost = decode.getResult().get(i).getPRICE();
-                        String contents = "설명입니다. 아직 미완성 입니다."; // need contents
+                        String contents = decode.getResult().get(i).getEXPLANATION();
+//                        String contents = "설명입니다. 아직 미완성 입니다."; // need contents
                         String image = decode.getResult().get(i).getIMAGE();
                         if (image == null) {
                             image = "http://14.63.196.255:8080/020cafe/image/logo.png";
@@ -126,6 +127,7 @@ public class DrinkListFragment extends Fragment {
                 it.putExtra("CoffeeName", menuListAdapter.getItems().get(position).getmName());
                 it.putExtra("CoffeeImage", menuListAdapter.getItems().get(position).getmImageUrl());
                 it.putExtra("CoffeePrice", menuListAdapter.getItems().get(position).getmCost());
+                it.putExtra("CoffeeExplanation", menuListAdapter.getItems().get(position).getmExplain());
                 it.putExtra("separate",0);
                 startActivity(it);
             }

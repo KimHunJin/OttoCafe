@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="sungkyul.ac.kr.ottocafe.activities.main.CartActivity">
+    tools:context="sungkyul.ac.kr.ottocafe.activities.menu.CartActivity">
 
     <include layout="@layout/toolbar_custom_back" />
 

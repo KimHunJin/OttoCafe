@@ -9,9 +9,14 @@ public class SubItem {
     String NAME;
     String PRICE;
     String IMAGE;
+    String EXPLANATION;
 
     String ID;
     String POINT;
+
+    public String getEXPLANATION() {
+        return EXPLANATION;
+    }
 
     public String getID() {
         return ID;

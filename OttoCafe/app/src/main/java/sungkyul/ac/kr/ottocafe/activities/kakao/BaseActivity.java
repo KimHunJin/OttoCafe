@@ -3,11 +3,16 @@ package sungkyul.ac.kr.ottocafe.activities.kakao;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-import sungkyul.ac.kr.ottocafe.activities.main.MainActivity;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.kakao.usermgmt.callback.UnLinkResponseCallback;
+
 import sungkyul.ac.kr.ottocafe.activities.member.LoginActivity;
 import sungkyul.ac.kr.ottocafe.activities.member.SignupActivity;
-import sungkyul.ac.kr.ottocafe.activities.menu.MenuActivity;
+import sungkyul.ac.kr.ottocafe.MainActivity;
 import sungkyul.ac.kr.ottocafe.utils.GlobalApplication;
 
 /**
@@ -17,6 +22,8 @@ import sungkyul.ac.kr.ottocafe.utils.GlobalApplication;
  */
 public class BaseActivity extends AppCompatActivity {
     protected static Activity self;
+
+    private static final String TAG = "BaseActivity";
 
     @Override
     protected void onResume() {
@@ -59,9 +66,41 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void redirectMainActivity() {
-        final Intent intent = new Intent(this, MenuActivity.class);
+        final Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();
+    }
+
+    /**
+     * 카카오 회원 탈퇴
+     */
+    protected void unLink() {
+        UserManagement.requestUnlink(new UnLinkResponseCallback() {
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+
+            }
+
+            @Override
+            public void onNotSignedUp() {
+
+            }
+
+            @Override
+            public void onSuccess(Long result) {
+                Log.e(TAG, result + "");
+                redirectLoginActivity();
+            }
+        });
+    }
+
+    protected void logout() {
+        UserManagement.requestLogout(new LogoutResponseCallback() {
+            @Override
+            public void onCompleteLogout() {
+                redirectLoginActivity();
+            }
+        });
     }
 }

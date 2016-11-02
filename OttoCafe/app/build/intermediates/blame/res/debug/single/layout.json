@@ -168,10 +168,6 @@
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\layout\\numfield.xml"
     },
     {
-        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main_form.xml",
-        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\layout\\activity_main_form.xml"
-    },
-    {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\layout\\activity_splash.xml"
     },
@@ -196,12 +192,16 @@
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_big_media.xml"
     },
     {
-        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_alert_dialog_material.xml"
+        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_nav2.xml",
+        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\layout\\item_nav2.xml"
     },
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
@@ -270,10 +270,6 @@
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
         "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_part_chronometer.xml"
-    },
-    {
-        "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "D:\\user\\OttoCafe\\OttoCafe\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "D:\\user\\OttoCafe\\OttoCafe\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="280dp"
+    android:layout_width="304dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:background="@color/colorWhite"
@@ -9,9 +9,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
         android:background="@drawable/coffeeback"
         android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorInvisibleBlue">
+
+        </LinearLayout>
 
         <sungkyul.ac.kr.ottocafe.utils.RoundImageView
             android:id="@+id/imgNavUser"
@@ -28,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="24dp"
+            android:textStyle="bold"
             android:layout_toRightOf="@id/imgNavUser"
-            android:background="#33eeeeee"
             android:text="사용자 이름"
             android:textColor="@color/colorWhite"
             android:textSize="18sp" />
@@ -42,7 +50,6 @@
             android:layout_marginLeft="14dp"
             android:layout_marginTop="4dp"
             android:layout_toRightOf="@id/imgNavUser"
-            android:background="#33eeeeee"
             android:text="적립 포인트"
             android:textColor="@color/colorWhite"
             android:textSize="14sp" />
@@ -52,9 +59,24 @@
     <ListView
         android:id="@+id/lstNavView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.399"
         android:divider="@color/colorBlack"
         android:dividerHeight="1dp"
         android:scrollbars="none"></ListView>
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.001"/>
+
+    <ListView
+        android:id="@+id/lstNavView2"
+        android:divider="@color/colorBlack"
+        android:dividerHeight="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:layout_weight="0.399"></ListView>
 
 </LinearLayout>

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorWhite"
     tools:context="sungkyul.ac.kr.ottocafe.activities.menu.DetailMenuActivity">
 
     <include layout="@layout/toolbar_custom_back"/>
@@ -25,15 +26,22 @@
         android:textColor="@color/colorBlack"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/txtDetailMenuComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
-        android:textSize="12sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:id="@+id/txtDetailMenuComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:textSize="12sp" />
+    </ScrollView>
+
+
 
     <Spinner
         android:id="@+id/spnSIze"
@@ -75,7 +83,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:gravity="center"

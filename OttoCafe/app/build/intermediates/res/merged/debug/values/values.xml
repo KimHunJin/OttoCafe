@@ -45,6 +45,7 @@
     <color name="colorBrightGray">#BBBBBB</color>
     <color name="colorCostPink">#E55D87</color>
     <color name="colorGray">#888888</color>
+    <color name="colorInvisibleBlue">#880bdbf2</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorRightGray">#eeeeee</color>

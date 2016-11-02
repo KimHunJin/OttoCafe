@@ -7,12 +7,11 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.google.firebase.messaging.RemoteMessage;
 
 import sungkyul.ac.kr.ottocafe.R;
-import sungkyul.ac.kr.ottocafe.activities.main.MainActivity;
+import sungkyul.ac.kr.ottocafe.MainActivity;
 
 /**
  * Created by HunJin on 2016-10-25.

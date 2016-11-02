@@ -75,9 +75,8 @@
             android:name="unityplayer.ForwardNativeEventsToDalvik"
             android:value="false" />
 
-        <activity android:name=".activities.main.MainActivity" />
-        <activity android:name=".activities.menu.MenuActivity" />
-        <activity android:name=".activities.main.CartActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.menu.CartActivity" />
         <activity android:name=".activities.credit.NicePayDemoActivity" />
         <activity android:name=".activities.menu.DetailMenuActivity"></activity>
 
