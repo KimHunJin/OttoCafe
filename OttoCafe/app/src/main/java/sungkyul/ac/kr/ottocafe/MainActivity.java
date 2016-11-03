@@ -208,7 +208,7 @@ public class MainActivity extends BaseActivity {
                 switch (position) {
                     case 0: {
                         // 내정보
-
+                        Toast.makeText(getApplicationContext(),"추후 업데이트...",Toast.LENGTH_SHORT).show();
                         break;
                     }
                     case 1: {
@@ -224,6 +224,8 @@ public class MainActivity extends BaseActivity {
 
                     case 3: {
                         // 쿠폰
+                        Toast.makeText(getApplicationContext(),"추후 업데이트...",Toast.LENGTH_SHORT).show();
+                        break;
                     }
                 }
             }
