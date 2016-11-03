@@ -237,15 +237,23 @@ public class MainActivity extends BaseActivity {
                 switch (position) {
                     case 0: {
                         // 설정
+                        Toast.makeText(getApplicationContext(),"설정",Toast.LENGTH_SHORT).show();
+                        break;
                     }
                     case 1: {
                         // 공지사항
+                        Toast.makeText(getApplicationContext(),"공지사항",Toast.LENGTH_SHORT).show();
+                        break;
                     }
                     case 2: {
                         // 버전
+                        Toast.makeText(getApplicationContext(),"v0.9",Toast.LENGTH_SHORT).show();
+                        break;
                     }
                     case 3: {
                         // 만든이
+                        Toast.makeText(getApplicationContext(),"김경희 김미선 김용훈 김헌진",Toast.LENGTH_SHORT).show();
+                        break;
                     }
                 }
             }

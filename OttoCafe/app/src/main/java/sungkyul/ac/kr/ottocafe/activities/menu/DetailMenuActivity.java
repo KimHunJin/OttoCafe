@@ -100,7 +100,8 @@ public class DetailMenuActivity extends AppCompatActivity {
                 // 결제 했을 때 서버에 재고 수량 반영
                 setAutoStockManagement(txtName.getText().toString().trim());
                 setOrderList(SaveDataSession.getAppPreferences(getApplicationContext(), "UserId"), txtName.getText().toString(), "1", upPrice/100+"");
-                startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
+                Toast.makeText(getApplicationContext(), "결제 됐습니다.", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(getApplicationContext(), NicePayDemoActivity.class));
             }
         });
 
