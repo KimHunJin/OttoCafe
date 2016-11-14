@@ -87,9 +87,9 @@ public class DrinkListFragment extends Fragment {
 //                        String contents = "설명입니다. 아직 미완성 입니다."; // need contents
                         String image = decode.getResult().get(i).getIMAGE();
                         if (image == null) {
-                            image = "http://14.63.196.255:8080/020cafe/image/logo.png";
+                            image = "http://14.63.196.255:8080/OttoCafe/image/logo.png";
                         } else {
-                            image = "http://14.63.196.255:8080/020cafe/" + image.substring(3, image.length());
+                            image = "http://14.63.196.255:8080/OttoCafe/" + image.substring(3, image.length());
                         }
 
 //                        Log.e(TAG, key + " " + name + " " + price + " " + contents + " " + image);

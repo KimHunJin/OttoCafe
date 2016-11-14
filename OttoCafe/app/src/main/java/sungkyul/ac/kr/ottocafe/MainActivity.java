@@ -37,6 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import sungkyul.ac.kr.ottocafe.activities.kakao.BaseActivity;
 import sungkyul.ac.kr.ottocafe.activities.menu.CartActivity;
 import sungkyul.ac.kr.ottocafe.activities.unity.UnityPlayerActivity;
+import sungkyul.ac.kr.ottocafe.adapter.NavCoreListAdapter;
 import sungkyul.ac.kr.ottocafe.adapter.NavListAdapter;
 import sungkyul.ac.kr.ottocafe.adapter.ViewPagerAdapter;
 import sungkyul.ac.kr.ottocafe.items.NavItem;
@@ -59,6 +60,7 @@ public class MainActivity extends BaseActivity {
     private TabLayout tabs;
     private Toolbar toolbar;
     private NavListAdapter navListAdapter, navListAdapter2;
+    private NavCoreListAdapter navCoreListAdapter;
     private ArrayList<NavItem> navItemArrayList, navItemArrayList2;
 
     private DrawerLayout drawer;
@@ -67,6 +69,8 @@ public class MainActivity extends BaseActivity {
     private TextView txtNavName, txtNavPoint;
     private ListView lstNav, lstNav2;
     private FloatingActionButton fbtAR;
+
+    private boolean navOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,9 +102,9 @@ public class MainActivity extends BaseActivity {
         backPressCloseHandler = new BackPressCloseHandler(this);
         fbtAR = (FloatingActionButton) findViewById(R.id.fbtAR);
         lstAdd();
-        navListAdapter = new NavListAdapter(getApplicationContext(), R.layout.item_nav, navItemArrayList);
+        navCoreListAdapter = new NavCoreListAdapter(getApplicationContext(), R.layout.item_nav, navItemArrayList);
         navListAdapter2 = new NavListAdapter(getApplicationContext(), R.layout.item_nav2, navItemArrayList2);
-        lstNav.setAdapter(navListAdapter);
+        lstNav.setAdapter(navCoreListAdapter);
         lstNav2.setAdapter(navListAdapter2);
     }
 
@@ -259,16 +263,33 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        lstNav2.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0 : {
+                        logout();
+                        return true;
+                    }
+                    case 1 : {
+                        unLink();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
     }
 
     /**
      * 네비게이션 항목 추가
      */
     void lstAdd() {
-        navItemArrayList.add(new NavItem(0, "내정보"));
-        navItemArrayList.add(new NavItem(1, "장바구니"));
-        navItemArrayList.add(new NavItem(2, "AR메뉴"));
-        navItemArrayList.add(new NavItem(3, "쿠폰"));
+        navItemArrayList.add(new NavItem(0, "내정보",R.drawable.nav_myinfo));
+        navItemArrayList.add(new NavItem(1, "장바구니",R.drawable.nav_basket));
+        navItemArrayList.add(new NavItem(2, "AR메뉴", R.drawable.nav_ar));
+        navItemArrayList.add(new NavItem(3, "쿠폰", R.drawable.nav_coupon));
 
         navItemArrayList2.add(new NavItem(0, "설정"));
         navItemArrayList2.add(new NavItem(1, "공지사항"));
@@ -292,24 +313,26 @@ public class MainActivity extends BaseActivity {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 imgNav.setImageDrawable(getResources().getDrawable(R.drawable.main_menu));
-                imgNav.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        drawer.openDrawer(Gravity.LEFT);
-                    }
-                });
+                navOpen = false;
+//                imgNav.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        drawer.openDrawer(Gravity.LEFT);
+//                    }
+//                });
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 imgNav.setImageDrawable(getResources().getDrawable(R.drawable.back));
-                imgNav.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        drawer.closeDrawer(Gravity.LEFT);
-                    }
-                });
+                navOpen = true;
+//                imgNav.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        drawer.closeDrawer(Gravity.LEFT);
+//                    }
+//                });
             }
         };
         drawer.setDrawerListener(toggle);
@@ -330,6 +353,21 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), UnityPlayerActivity.class));
+            }
+        });
+
+        imgNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(navOpen == false) {
+                    drawer.openDrawer(Gravity.LEFT);
+                    imgNav.setImageDrawable(getResources().getDrawable(R.drawable.main_menu));
+                    navOpen = true;
+                } else {
+                    drawer.closeDrawer(Gravity.LEFT);
+                    imgNav.setImageDrawable(getResources().getDrawable(R.drawable.back));
+                    navOpen = false;
+                }
             }
         });
     }

@@ -98,25 +98,25 @@ public class CartActivity extends AppCompatActivity {
             mImgUrl = cursor.getString(4);
 
             cartListAdapter.addData(new CartItem(mNumber, mName, CostChange.changCost(mCount), CostChange.changCost(mCost), mImgUrl));
-            totalCost += mCount;
+            totalCost += mCount * mCost;
             count++;
         }
 
         txtDrinkCount.setText("음료 " + count);
 
-        Cursor cursorSIde = mSQLite.selectSide();
+        Cursor cursorSide = mSQLite.selectSide();
         cartListSideAdapter.clear();
 
         count = 0;
-        while (cursorSIde.moveToNext()) {
-            mNumber = cursor.getInt(0);
-            mName = cursor.getString(1);
-            mCost = cursor.getInt(2);
-            mCount = cursor.getInt(3);
-            mImgUrl = cursor.getString(4);
+        while (cursorSide.moveToNext()) {
+            mNumber = cursorSide.getInt(0);
+            mName = cursorSide.getString(1);
+            mCost = cursorSide.getInt(2);
+            mCount = cursorSide.getInt(3);
+            mImgUrl = cursorSide.getString(4);
 
             cartListSideAdapter.addData(new CartItem(mNumber, mName, CostChange.changCost(mCount), CostChange.changCost(mCost), mImgUrl));
-            totalCost += mCount;
+            totalCost += mCount * mCost;
             count++;
         }
 
@@ -257,11 +257,11 @@ public class CartActivity extends AppCompatActivity {
                 if (separate == 0) {
                     mSQLite.delete(cartListAdapter.getItems().get(position).getcName());
                     cartListAdapter.removeData(position);
-                    txtDrinkCount.setText((Integer.parseInt(txtDrinkCount.getText().toString().trim()) - 1) + "");
+                    txtDrinkCount.setText("음료 " + (Integer.parseInt(txtDrinkCount.getText().toString().trim().substring(3)) - 1) + "");
                 } else {
                     mSQLite.deleteSide(cartListSideAdapter.getItems().get(position).getcName());
                     cartListSideAdapter.removeData(position);
-                    txtSideCount.setText((Integer.parseInt(txtSideCount.getText().toString().trim()) - 1) + "");
+                    txtSideCount.setText("사이드메뉴 " + (Integer.parseInt(txtSideCount.getText().toString().trim().substring(6)) - 1) + "");
                 }
             }
         });
@@ -289,9 +289,10 @@ public class CartActivity extends AppCompatActivity {
     void clear() {
         mSQLite.deleteAll();
         cartListAdapter.clear();
+        cartListSideAdapter.clear();
         txtTotalPrice.setText("0");
-        txtDrinkCount.setText("0");
-        txtSideCount.setText("0");
+        txtDrinkCount.setText("음료 0");
+        txtSideCount.setText("사이드메뉴 0");
     }
 
     /**

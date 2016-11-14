@@ -6,6 +6,11 @@ package sungkyul.ac.kr.ottocafe.items;
 public class NavItem {
     private int number;
     private String content;
+    private int image;
+
+    public int getImage() {
+        return image;
+    }
 
     public int getNumber() {
         return number;
@@ -18,5 +23,11 @@ public class NavItem {
     public NavItem(int number, String content) {
         this.number = number;
         this.content = content;
+    }
+
+    public NavItem(int number, String content, int image) {
+        this.number = number;
+        this.content = content;
+        this.image = image;
     }
 }

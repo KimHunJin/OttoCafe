@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.296"
         android:background="@drawable/coffeeback"
         android:orientation="horizontal">
 
@@ -36,11 +36,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="24dp"
-            android:textStyle="bold"
             android:layout_toRightOf="@id/imgNavUser"
             android:text="사용자 이름"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtNavUserPoint"
@@ -60,23 +60,24 @@
         android:id="@+id/lstNavView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.399"
-        android:divider="@color/colorBlack"
-        android:dividerHeight="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:divider="@color/colorWhite"
+        android:layout_weight="0.342"
         android:scrollbars="none"></ListView>
 
     <VideoView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.001"/>
+        android:layout_weight="0.001" />
 
     <ListView
         android:id="@+id/lstNavView2"
-        android:divider="@color/colorBlack"
-        android:dividerHeight="1dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="none"
-        android:layout_weight="0.399"></ListView>
+        android:divider="@color/colorWhite"
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.362"
+        android:scrollbars="none"></ListView>
 
 </LinearLayout>

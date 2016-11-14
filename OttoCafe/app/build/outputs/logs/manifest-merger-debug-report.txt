@@ -112,7 +112,7 @@ MERGED from [com.astuetz:pagerslidingtabstrip:1.0.1] D:\user\OttoCafe\OttoCafe\a
 	android:allowBackup
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:38:9-35
 	android:icon
-		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:39:9-46
+		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:39:9-40
 	android:theme
 		ADDED from D:\user\OttoCafe\OttoCafe\app\src\main\AndroidManifest.xml:42:9-40
 	android:name
